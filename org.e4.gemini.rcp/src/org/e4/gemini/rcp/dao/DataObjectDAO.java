@@ -14,10 +14,8 @@ public class DataObjectDAO {
 
 	@Inject
 	@GeminiPersistenceContext(unitName="puTest", properties = {
-			@GeminiPersistenceProperty(name=PersistenceUnitProperties.JDBC_DRIVER, value="org.gjt.mm.mysql.Driver"),
-			@GeminiPersistenceProperty(name=PersistenceUnitProperties.JDBC_URL, value="jdbc:mysql://127.0.0.1/test"),
-			@GeminiPersistenceProperty(name=PersistenceUnitProperties.JDBC_USER, value="test"),
-			@GeminiPersistenceProperty(name=PersistenceUnitProperties.JDBC_PASSWORD, value="test"),
+			@GeminiPersistenceProperty(name=PersistenceUnitProperties.JDBC_DRIVER, value="org.apache.derby.jdbc.EmbeddedDriver"),
+			@GeminiPersistenceProperty(name=PersistenceUnitProperties.JDBC_URL, value="jdbc:derby:test;create=true"),
 			@GeminiPersistenceProperty(name=PersistenceUnitProperties.DDL_GENERATION, value=PersistenceUnitProperties.DROP_AND_CREATE),
 			@GeminiPersistenceProperty(name=PersistenceUnitProperties.DDL_GENERATION_MODE, value=PersistenceUnitProperties.DDL_DATABASE_GENERATION),
 			@GeminiPersistenceProperty(name=PersistenceUnitProperties.CONNECTION_POOL_MIN, value="20"),

@@ -24,10 +24,11 @@ public class SavePreferencesHandler {
 	
 	@Execute
 	public void execute(IWorkbench workbench, IEclipseContext context,@Named(IServiceConstants.ACTIVE_SHELL) Shell shell) throws InvocationTargetException, InterruptedException {
-		preferences.put("jdbc_driver", "org.gjt.mm.mysql.Driver");
-		preferences.put("jdbc_url", "jdbc:mysql://127.0.0.1/test");
-		preferences.put("jdbc_user", "test");
-		preferences.put("jdbc_password", "test");
+		preferences.put("jdbc_driver", "org.apache.derby.jdbc.EmbeddedDriver");
+		preferences.put("jdbc_url", "jdbc:derby:test;create=true");
+		//Not needed for embedded derby
+//		preferences.put("jdbc_user", "test");
+//		preferences.put("jdbc_password", "test");
 		try {
 			preferences.flush();
 			MessageDialog.openInformation(shell, "Info :: Save Preferences","Done!");

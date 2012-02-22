@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Two
+Bundle-SymbolicName: org.e4.gemini.test.data.two
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: org.e4.gemini.test.data.two.Activator
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Import-Package: org.osgi.framework;version="1.3.0"
+Require-Bundle: org.eclipse.gemini.ext.di;bundle-version="1.0.0"
+Meta-Persistence: META-INF/persistence.xml
+JPA-PersistenceUnits: puTest2

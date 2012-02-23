@@ -65,9 +65,19 @@ public class GeminiEMFSupplier extends ExtendedObjectSupplier {
 			error("EntityManagerFactoryBuilder is null...");
 			return null;
 		}
-		EntityManagerFactory emf = emfb.createEntityManagerFactory(emProperties);
-		emfs.put(unitName, emf);
-		return emf;
+		
+		//Catch to start up the application, even the db connection failed
+		try {
+			EntityManagerFactory emf = emfb.createEntityManagerFactory(emProperties);
+			emfs.put(unitName, emf);
+			return emf;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+		
+		
 	}
 
 	/**

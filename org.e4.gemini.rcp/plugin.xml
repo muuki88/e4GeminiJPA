@@ -5,11 +5,11 @@
          id="product"
          point="org.eclipse.core.runtime.products">
       <product
-            name="org.e4.gemini.rcp.derby"
+            name="org.e4.gemini.rcp"
             application="org.eclipse.e4.ui.workbench.swt.E4Application">
          <property
                name="appName"
-               value="org.e4.gemini.rcp.derby">
+               value="org.e4.gemini.rcp">
          </property>
          <property
                name="applicationXMI"

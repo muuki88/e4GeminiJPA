@@ -3,12 +3,11 @@
 
 <product name="org.e4.gemini.rcp" id="org.e4.gemini.rcp.product" application="org.eclipse.e4.ui.workbench.swt.E4Application" version="1.0.0.qualifier" useFeatures="false" includeLaunchers="true">
 
-
    <configIni use="default">
    </configIni>
 
    <launcherArgs>
-      <vmArgs>-DGEMINI_DEBUG=true</vmArgs>
+      <vmArgs>-DGEMINI_DEBUG=true -DREFRESH_BUNDLES=false</vmArgs>
       <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts</vmArgsMac>
    </launcherArgs>
 
@@ -20,7 +19,6 @@
          <bmp/>
       </win>
    </launcher>
-
 
    <vm>
    </vm>
@@ -100,7 +98,9 @@ http://www.eclipse.org/legal/epl-v10.html
       <plugin id="org.eclipse.equinox.preferences"/>
       <plugin id="org.eclipse.equinox.registry"/>
       <plugin id="org.eclipse.equinox.util"/>
-      <plugin id="org.eclipse.gemini.driver.mysql" fragment="true"/>
+      <plugin id="org.eclipse.gemini.dbaccess.mysql"/>
+      <plugin id="org.eclipse.gemini.dbaccess.util"/>
+      <plugin id="org.eclipse.gemini.driver.mysql"/>
       <plugin id="org.eclipse.gemini.ext.di"/>
       <plugin id="org.eclipse.gemini.jpa"/>
       <plugin id="org.eclipse.jface"/>

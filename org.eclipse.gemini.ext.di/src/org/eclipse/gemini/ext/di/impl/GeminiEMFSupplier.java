@@ -35,40 +35,49 @@ import org.osgi.service.jpa.EntityManagerFactoryBuilder;
 import org.osgi.util.tracker.ServiceTracker;
 
 @SuppressWarnings("restriction")
-@Component(immediate=true, servicefactory=true)
+@Component(immediate = true, servicefactory = true)
 public class GeminiEMFSupplier extends ExtendedObjectSupplier {
-	
+
 	private boolean trace = false;
-	private ServiceTracker<?,?> emfTracker;
+	private ServiceTracker<?, ?> emfTracker;
 	private Map<String, EntityManagerFactory> emfs = new HashMap<String, EntityManagerFactory>();
-	
+
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@PostConstruct
 	public void init() {
 		trace = (System.getProperty("GEMINI_DEBUG") != null && System.getProperty("GEMINI_DEBUG").equals("true"));
 		trace("INIT");
-		if(emfTracker != null) return;
+		if (emfTracker != null)
+			return;
 		EMFServiceTracker st = new EMFServiceTracker(getContext());
 		emfTracker = new ServiceTracker(getContext(), EntityManagerFactory.class.getName(), st);
 		emfTracker.open();
 	}
-	
+
 	@Override
 	public Object get(IObjectDescriptor descriptor, IRequestor requestor, boolean track, boolean group) {
-		return getEMF(getUnitName(descriptor, requestor.getRequestingObjectClass()), getProperties(descriptor, requestor.getRequestingObjectClass()));
+		return getEMF(getUnitName(descriptor, requestor.getRequestingObjectClass()),
+				getProperties(descriptor, requestor.getRequestingObjectClass()));
 	}
-	
-	protected EntityManagerFactory getEMF(String unitName, Map<String, Object> emProperties){
-		if(emfs.get(unitName) != null){
-			if(emfs.get(unitName).isOpen()){
-				return emfs.get(unitName);
-			}else{
+
+	protected EntityManagerFactory getEMF(String unitName, Map<String, Object> emProperties) {
+		if (emProperties.containsKey("REINIT")) {
+			if (emfs.get(unitName) != null) {
+				emfs.get(unitName).close();
 				emfs.remove(unitName);
 			}
 		}
-		
+
+		if (emfs.get(unitName) != null) {
+			if (emfs.get(unitName).isOpen()) {
+				return emfs.get(unitName);
+			} else {
+				emfs.remove(unitName);
+			}
+		}
+
 		EntityManagerFactoryBuilder emfb = lookupEntityManagerFactoryBuilder(unitName);
-		if(emfb == null){
+		if (emfb == null) {
 			error("EntityManagerFactoryBuilder is null...");
 			return null;
 		}
@@ -76,47 +85,49 @@ public class GeminiEMFSupplier extends ExtendedObjectSupplier {
 		emfs.put(unitName, emf);
 		return emf;
 	}
-	
-	
-	protected String getUnitName(IObjectDescriptor descriptor, Class<?> requestingObject){
-        if (descriptor == null) return null;
-        GeminiPersistenceUnit qualifier = descriptor.getQualifier(GeminiPersistenceUnit.class);
-        return qualifier.unitName();
-	}
-	
-	protected Map<String,Object> getProperties(IObjectDescriptor descriptor, Class<?> requestingObject){
-        if (descriptor == null) return null;
-        GeminiPersistenceUnit qualifier = descriptor.getQualifier(GeminiPersistenceUnit.class);
-        Map<String, Object> properties = new HashMap<String, Object>();
-        for(GeminiPersistenceProperty pp : qualifier.properties()){
-        	if(pp.valuePref().value().length() > 0){
-        		String val = DIEActivator.getDefault().getPreferencesService().getString(getNodePath(pp.valuePref(), requestingObject), pp.valuePref().value() , null, null);
-        		properties.put(pp.name(), val);
-        	}else{
-        		properties.put(pp.name(), pp.value());	
-        	}        	
-        }
-        trace(properties.toString());
-        return properties;
-	}
-		
-	protected String getNodePath(Preference preference, Class<?> requestingObject) {
-        String nodePath = preference.nodePath();
 
-        if (nodePath == null || nodePath.length() == 0) {
-                if (requestingObject == null)
-                        return null;
-                nodePath = FrameworkUtil.getBundle(requestingObject).getSymbolicName();
-        }
-        return nodePath;
+	protected String getUnitName(IObjectDescriptor descriptor, Class<?> requestingObject) {
+		if (descriptor == null)
+			return null;
+		GeminiPersistenceUnit qualifier = descriptor.getQualifier(GeminiPersistenceUnit.class);
+		return qualifier.unitName();
 	}
-	
-	protected BundleContext getContext(){
+
+	protected Map<String, Object> getProperties(IObjectDescriptor descriptor, Class<?> requestingObject) {
+		if (descriptor == null)
+			return null;
+		GeminiPersistenceUnit qualifier = descriptor.getQualifier(GeminiPersistenceUnit.class);
+		Map<String, Object> properties = new HashMap<String, Object>();
+		for (GeminiPersistenceProperty pp : qualifier.properties()) {
+			if (pp.valuePref().value().length() > 0) {
+				String val = DIEActivator.getDefault().getPreferencesService()
+						.getString(getNodePath(pp.valuePref(), requestingObject), pp.valuePref().value(), null, null);
+				properties.put(pp.name(), val);
+			} else {
+				properties.put(pp.name(), pp.value());
+			}
+		}
+		trace(properties.toString());
+		return properties;
+	}
+
+	protected String getNodePath(Preference preference, Class<?> requestingObject) {
+		String nodePath = preference.nodePath();
+
+		if (nodePath == null || nodePath.length() == 0) {
+			if (requestingObject == null)
+				return null;
+			nodePath = FrameworkUtil.getBundle(requestingObject).getSymbolicName();
+		}
+		return nodePath;
+	}
+
+	protected BundleContext getContext() {
 		Bundle bundle = FrameworkUtil.getBundle(getClass());
-		return bundle.getBundleContext();		
+		return bundle.getBundleContext();
 	}
-	
-	public EntityManagerFactoryBuilder lookupEntityManagerFactoryBuilder(String puName){
+
+	public EntityManagerFactoryBuilder lookupEntityManagerFactoryBuilder(String puName) {
 		String filter = "(osgi.unit.name=" + puName + ")";
 		ServiceReference<?>[] refs = null;
 		try {
@@ -127,9 +138,9 @@ public class GeminiEMFSupplier extends ExtendedObjectSupplier {
 		trace("EMF Builder Service refs looked up from registry: " + refs);
 		return (refs == null) ? null : (EntityManagerFactoryBuilder) getContext().getService(refs[0]);
 	}
-		
+
 	@PreDestroy
-    public void destroy(){
+	public void destroy() {
 		trace("DESTROY");
 		try {
 			emfTracker.close();
@@ -137,19 +148,22 @@ public class GeminiEMFSupplier extends ExtendedObjectSupplier {
 			emfTracker = null;
 		}
 		Iterator<Entry<String, EntityManagerFactory>> it = emfs.entrySet().iterator();
-	    while (it.hasNext()) {
-	        try {
-	        	it.next().getValue().close();
-			}catch(Exception e){}
-	    }
-	    emfs.clear();
+		while (it.hasNext()) {
+			try {
+				it.next().getValue().close();
+			} catch (Exception e) {
+			}
+		}
+		emfs.clear();
 	}
-	
-	protected void trace(String str){
-		if(!trace) return;
+
+	protected void trace(String str) {
+		if (!trace)
+			return;
 		System.err.println("[GEMINI_EXT] " + str);
 	}
-	protected void error(String str){
+
+	protected void error(String str) {
 		System.err.println("[GEMINI_EXT] " + str);
 	}
 }

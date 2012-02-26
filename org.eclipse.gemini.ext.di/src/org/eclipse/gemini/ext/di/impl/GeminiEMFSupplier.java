@@ -52,10 +52,9 @@ public class GeminiEMFSupplier extends ExtendedObjectSupplier {
 	}
 
 	protected EntityManagerFactory getEMF(String unitName, Map<String, Object> emProperties) {
-		if (emfs.get(unitName) != null) {
-			if (emfs.get(unitName).isOpen()) {
-				return emfs.get(unitName);
-			} else {
+		if (emProperties.containsKey("REINIT")) {
+			if (emfs.get(unitName) != null) {
+				emfs.get(unitName).close();
 				emfs.remove(unitName);
 			}
 		}
@@ -76,8 +75,6 @@ public class GeminiEMFSupplier extends ExtendedObjectSupplier {
 			e.printStackTrace();
 			return null;
 		}
-		
-		
 	}
 
 	/**

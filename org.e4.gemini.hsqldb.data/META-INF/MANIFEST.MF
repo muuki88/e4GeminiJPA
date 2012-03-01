@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: HSQL Data
+Bundle-SymbolicName: org.e4.gemini.hsqldb.data;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Import-Package: javax.persistence;version="2.0.4"
+Meta-Persistence: META-INF/persistence.xml
+JPA-PersistenceUnits: testHSQL
+Export-Package: org.e4.gemini.hsqldb.data

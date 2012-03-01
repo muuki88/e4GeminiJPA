@@ -27,16 +27,17 @@ import org.eclipse.gemini.ext.di.GeminiPersistenceUnit;
 import org.eclipse.persistence.config.PersistenceUnitProperties;
 import org.eclipse.swt.widgets.Shell;
 
-
-@SuppressWarnings("restriction")
 public class OpenHandler {
+	
+	//com.mysql.jdbc.Driver
+	//org.gjt.mm.mysql.Driver
 	
 	@Inject
 	@GeminiPersistenceUnit(unitName="puTest", properties = {
-			@GeminiPersistenceProperty(name=PersistenceUnitProperties.JDBC_DRIVER, value="org.gjt.mm.mysql.Driver"),
-			@GeminiPersistenceProperty(name=PersistenceUnitProperties.JDBC_URL, value="jdbc:mysql://127.0.0.1/test"),
-			@GeminiPersistenceProperty(name=PersistenceUnitProperties.JDBC_USER, value="test"),
-			@GeminiPersistenceProperty(name=PersistenceUnitProperties.JDBC_PASSWORD, value="test"),
+			@GeminiPersistenceProperty(name = PersistenceUnitProperties.JDBC_DRIVER, value = "com.mysql.jdbc.Driver"),
+			@GeminiPersistenceProperty(name = PersistenceUnitProperties.JDBC_URL, value = "jdbc:mysql://127.0.0.1/test"),
+			@GeminiPersistenceProperty(name = PersistenceUnitProperties.JDBC_USER, value = "test"),
+			@GeminiPersistenceProperty(name = PersistenceUnitProperties.JDBC_PASSWORD, value = "test"),
 			@GeminiPersistenceProperty(name=PersistenceUnitProperties.DDL_GENERATION, value=PersistenceUnitProperties.DROP_AND_CREATE),
 			@GeminiPersistenceProperty(name=PersistenceUnitProperties.DDL_GENERATION_MODE, value=PersistenceUnitProperties.DDL_DATABASE_GENERATION),
 			@GeminiPersistenceProperty(name=PersistenceUnitProperties.CONNECTION_POOL_MIN, value="20"),
@@ -78,14 +79,18 @@ public class OpenHandler {
 	@Execute
 	public void execute(IEclipseContext context, @Named(IServiceConstants.ACTIVE_SHELL) Shell shell) throws InvocationTargetException, InterruptedException {
 
-		System.out.println("entityManagerFactory:" + emf);
-		System.out.println("entityManagerFactory 1:" + emf1);
-	
-		
-		
-		DataObject dataObj = new DataObject();
-		dataObj.setDummy("bla bla");
-		dao.saveDataObject(dataObj);
+		try {
+			System.out.println("entityManagerFactory:" + emf);
+			System.out.println("entityManagerFactory 1:" + emf1);
+			
+			
+			DataObject dataObj = new DataObject();
+			dataObj.setDummy("bla bla");
+			dao.saveDataObject(dataObj);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 	}
 	
 	

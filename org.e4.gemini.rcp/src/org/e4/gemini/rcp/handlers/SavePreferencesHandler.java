@@ -15,7 +15,6 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.widgets.Shell;
 import org.osgi.service.prefs.BackingStoreException;
 
-@SuppressWarnings("restriction")
 public class SavePreferencesHandler {
 	
 	@Inject
@@ -24,7 +23,7 @@ public class SavePreferencesHandler {
 	
 	@Execute
 	public void execute(IWorkbench workbench, IEclipseContext context,@Named(IServiceConstants.ACTIVE_SHELL) Shell shell) throws InvocationTargetException, InterruptedException {
-		preferences.put("jdbc_driver", "org.gjt.mm.mysql.Driver");
+		preferences.put("jdbc_driver", "com.mysql.jdbc.Driver");
 		preferences.put("jdbc_url", "jdbc:mysql://127.0.0.1/test");
 		preferences.put("jdbc_user", "test");
 		preferences.put("jdbc_password", "test");

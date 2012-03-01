@@ -21,12 +21,12 @@ import org.eclipse.gemini.ext.di.GeminiPersistenceContext;
 import org.eclipse.gemini.ext.di.GeminiPersistenceProperty;
 import org.osgi.service.component.annotations.Component;
 
-@SuppressWarnings("restriction")
 @Component(immediate=true, servicefactory=true)
 public class GeminiEMSupplier extends GeminiEMFSupplier {
 	
 	@Override
-	public Object get(IObjectDescriptor descriptor, IRequestor requestor, boolean track, boolean group) {		
+	public Object get(IObjectDescriptor descriptor, IRequestor requestor, boolean track, boolean group) {
+		storeRequestor(getUnitName(descriptor, requestor.getRequestingObjectClass()), requestor);
 		EntityManagerFactory emf = getEMF(getUnitName(descriptor, requestor.getRequestingObjectClass()), getProperties(descriptor, requestor.getRequestingObjectClass()));
 		return (emf != null) ? emf.createEntityManager() : null;
 	}

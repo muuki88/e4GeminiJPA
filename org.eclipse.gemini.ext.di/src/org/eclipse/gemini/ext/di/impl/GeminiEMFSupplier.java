@@ -36,7 +36,7 @@ public class GeminiEMFSupplier extends ExtendedObjectSupplier {
 	private boolean trace = false;
 	private Map<String, EntityManagerFactory> emfs = new HashMap<String, EntityManagerFactory>();
 	private Map<String, EntityManagerFactoryBuilder> emfbs = new HashMap<String, EntityManagerFactoryBuilder>();
-	
+
 	private Map<String, Set<IRequestor>> requestors = new HashMap<String, Set<IRequestor>>();
 
 	/* ================================================ */
@@ -64,13 +64,21 @@ public class GeminiEMFSupplier extends ExtendedObjectSupplier {
 			}
 		}
 
+		if (emfs.get(unitName) != null) {
+			if (emfs.get(unitName).isOpen()) {
+				return emfs.get(unitName);
+			} else {
+				emfs.remove(unitName);
+			}
+		}
+
 		EntityManagerFactoryBuilder emfb = lookupEntityManagerFactoryBuilder(unitName);
 		if (emfb == null) {
 			error("EntityManagerFactoryBuilder is null...");
 			return null;
 		}
-		
-		//Catch to start up the application, even the db connection failed
+
+		// Catch to start up the application, even the db connection failed
 		try {
 			EntityManagerFactory emf = emfb.createEntityManagerFactory(emProperties);
 			emfs.put(unitName, emf);
@@ -154,24 +162,23 @@ public class GeminiEMFSupplier extends ExtendedObjectSupplier {
 		}
 		emfs.clear();
 	}
-	
+
 	protected void storeRequestor(String pUnit, IRequestor req) {
-		if(!requestors.containsKey(pUnit))
+		if (!requestors.containsKey(pUnit))
 			requestors.put(pUnit, new HashSet<IRequestor>());
-		
+
 		requestors.get(pUnit).add(req);
 	}
-	
 
 	protected void updateRequestors(String pUnit) {
-		if(!requestors.containsKey(pUnit))
+		if (!requestors.containsKey(pUnit))
 			return;
-		
+
 		Set<IRequestor> reqs = requestors.get(pUnit);
 		Set<IRequestor> validReqs = new HashSet<IRequestor>();
-		
+
 		for (IRequestor requestor : reqs) {
-			if(requestor.isValid()) {
+			if (requestor.isValid()) {
 				requestor.resolveArguments(false);
 				validReqs.add(requestor);
 			}
@@ -188,7 +195,7 @@ public class GeminiEMFSupplier extends ExtendedObjectSupplier {
 	}
 
 	protected void bindEntityManagerFactory(EntityManagerFactory emf, Map<String, String> properties) {
-		trace("bindEntityManagerFactory() with " + properties);
+		trace("bindEntityManagerFactory() with " + properties + " toString: " + emf);
 		emfs.put(getUnitName(properties), emf);
 		updateRequestors(getUnitName(properties));
 	}
@@ -221,9 +228,9 @@ public class GeminiEMFSupplier extends ExtendedObjectSupplier {
 	/* ================================================ */
 
 	protected void trace(String str) {
-//		if (!trace)
-//			return;
-		System.err.println("[GEMINI_EXT][" + getClass().getSimpleName() + "] "+ str);
+		 if (!trace)
+		 return;
+		System.err.println("[GEMINI_EXT][" + getClass().getSimpleName() + "] " + str);
 	}
 
 	protected void error(String str) {

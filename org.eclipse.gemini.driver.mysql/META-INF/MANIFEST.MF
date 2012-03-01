@@ -3,7 +3,6 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Mysql
 Bundle-SymbolicName: org.eclipse.gemini.driver.mysql
 Bundle-Version: 1.0.0.qualifier
-Fragment-Host: org.eclipse.gemini.ext.di;bundle-version="1.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ClassPath: mysql-connector-java-5.1.17-bin.jar
 Export-Package: com.mysql.jdbc,

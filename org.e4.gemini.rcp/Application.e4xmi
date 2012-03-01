@@ -22,6 +22,8 @@
       <children xsi:type="menu:ToolBar" xmi:id="_Fa0f_VcWEeG0Z5nzWlsSYQ" elementId="toolbar:org.eclipse.ui.main.toolbar">
         <children xsi:type="menu:HandledToolItem" xmi:id="_Fa0f_lcWEeG0Z5nzWlsSYQ" iconURI="platform:/plugin/org.e4.gemini.rcp/icons/sample.gif" command="_Faz47lcWEeG0Z5nzWlsSYQ"/>
         <children xsi:type="menu:HandledToolItem" xmi:id="_Fa0f_1cWEeG0Z5nzWlsSYQ" iconURI="platform:/plugin/org.e4.gemini.rcp/icons/save_edit.gif" command="_LreZMFjYEeGjMop8bFpl0g"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_qgRwoF5eEeGyered-SDzFw" iconURI="platform:/plugin/org.e4.gemini.rcp/icons/savePerson_16.png" command="_g4yR8F5eEeGyered-SDzFw"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_0ZEJwGM3EeGnl_n_kY008Q" label="HSQL" tooltip="HSQL Access" command="_2mXkQGM2EeGnl_n_kY008Q"/>
       </children>
     </trimBars>
   </children>
@@ -30,6 +32,8 @@
   <handlers xmi:id="_Faz48lcWEeG0Z5nzWlsSYQ" contributionURI="bundleclass://org.e4.gemini.rcp/org.e4.gemini.rcp.handlers.SaveHandler" command="_Faz48VcWEeG0Z5nzWlsSYQ"/>
   <handlers xmi:id="_Faz49VcWEeG0Z5nzWlsSYQ" contributionURI="bundleclass://org.e4.gemini.rcp/org.e4.gemini.rcp.handlers.AboutHandler" command="_Faz49FcWEeG0Z5nzWlsSYQ"/>
   <handlers xmi:id="_kil5MFjXEeGjMop8bFpl0g" elementId="savePreferences" contributionURI="bundleclass://org.e4.gemini.rcp/org.e4.gemini.rcp.handlers.SavePreferencesHandler" command="_LreZMFjYEeGjMop8bFpl0g"/>
+  <handlers xmi:id="_ltIxwF5eEeGyered-SDzFw" elementId="savePerson" contributionURI="bundleclass://org.e4.gemini.rcp/org.e4.gemini.rcp.handlers.SavePersonHandler" command="_g4yR8F5eEeGyered-SDzFw"/>
+  <handlers xmi:id="_5uE8EGM2EeGnl_n_kY008Q" elementId="newCar" contributionURI="bundleclass://org.e4.gemini.rcp/org.e4.gemini.rcp.handlers.SaveToHSQLHandler" command="_2mXkQGM2EeGnl_n_kY008Q"/>
   <bindingTables xmi:id="_Faz47FcWEeG0Z5nzWlsSYQ" bindingContext="_Faz44VcWEeG0Z5nzWlsSYQ">
     <bindings xmi:id="_Faz47VcWEeG0Z5nzWlsSYQ" keySequence="Ctrl+Q" command="_Faz46lcWEeG0Z5nzWlsSYQ"/>
     <bindings xmi:id="_Faz48FcWEeG0Z5nzWlsSYQ" keySequence="Ctrl+O" command="_Faz47lcWEeG0Z5nzWlsSYQ"/>
@@ -45,6 +49,8 @@
   <commands xmi:id="_Faz48VcWEeG0Z5nzWlsSYQ" elementId="org.e4.gemini.rcp.saveCommand" commandName="saveCommand"/>
   <commands xmi:id="_Faz49FcWEeG0Z5nzWlsSYQ" elementId="org.e4.gemini.rcp.aboutCommand" commandName="aboutCommand"/>
   <commands xmi:id="_LreZMFjYEeGjMop8bFpl0g" elementId="org.e4.gemini.rcp.savePreferences" commandName="savePreferences"/>
+  <commands xmi:id="_g4yR8F5eEeGyered-SDzFw" elementId="org.e4.gemini.rcp.savePerson" commandName="savePerson"/>
+  <commands xmi:id="_2mXkQGM2EeGnl_n_kY008Q" elementId="org.e4.gemini.rcp.hsql.newCar" commandName="newCar"/>
   <addons xmi:id="_Faz45FcWEeG0Z5nzWlsSYQ" elementId="org.eclipse.e4.core.commands.service" contributionURI="bundleclass://org.eclipse.e4.core.commands/org.eclipse.e4.core.commands.CommandServiceAddon"/>
   <addons xmi:id="_Faz45VcWEeG0Z5nzWlsSYQ" elementId="org.eclipse.e4.ui.contexts.service" contributionURI="bundleclass://org.eclipse.e4.ui.services/org.eclipse.e4.ui.services.ContextServiceAddon"/>
   <addons xmi:id="_Faz45lcWEeG0Z5nzWlsSYQ" elementId="org.eclipse.e4.ui.bindings.service" contributionURI="bundleclass://org.eclipse.e4.ui.bindings/org.eclipse.e4.ui.bindings.BindingServiceAddon"/>

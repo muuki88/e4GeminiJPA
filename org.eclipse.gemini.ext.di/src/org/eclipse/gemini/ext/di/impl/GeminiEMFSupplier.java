@@ -15,7 +15,6 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.persistence.EntityManagerFactory;
 
@@ -33,6 +32,8 @@ import org.osgi.service.jpa.EntityManagerFactoryBuilder;
 @Component(immediate = true, servicefactory = true)
 public class GeminiEMFSupplier extends ExtendedObjectSupplier {
 
+	public static String GEMINI_REINIT = "GEMINI_REINIT";
+
 	private boolean trace = false;
 	private Map<String, EntityManagerFactory> emfs = new HashMap<String, EntityManagerFactory>();
 	private Map<String, EntityManagerFactoryBuilder> emfbs = new HashMap<String, EntityManagerFactoryBuilder>();
@@ -43,12 +44,6 @@ public class GeminiEMFSupplier extends ExtendedObjectSupplier {
 	/* =========== Eclipse e4 DI Extender ============ */
 	/* ================================================ */
 
-	@PostConstruct
-	public void init() {
-		trace = (System.getProperty("GEMINI_DEBUG") != null && System.getProperty("GEMINI_DEBUG").equals("true"));
-		trace("INIT");
-	}
-
 	@Override
 	public Object get(IObjectDescriptor descriptor, IRequestor requestor, boolean track, boolean group) {
 		storeRequestor(getUnitName(descriptor, requestor.getRequestingObjectClass()), requestor);
@@ -57,7 +52,7 @@ public class GeminiEMFSupplier extends ExtendedObjectSupplier {
 	}
 
 	protected EntityManagerFactory getEMF(String unitName, Map<String, Object> emProperties) {
-		if (emProperties.containsKey("REINIT")) {
+		if (emProperties.containsKey(GEMINI_REINIT)) {
 			if (emfs.get(unitName) != null) {
 				emfs.get(unitName).close();
 				emfs.remove(unitName);
@@ -191,6 +186,7 @@ public class GeminiEMFSupplier extends ExtendedObjectSupplier {
 	/* ================================================ */
 
 	protected void activate() {
+		trace = (System.getProperty("GEMINI_DEBUG") != null && System.getProperty("GEMINI_DEBUG").equals("true"));
 		trace("service activated");
 	}
 
@@ -227,9 +223,11 @@ public class GeminiEMFSupplier extends ExtendedObjectSupplier {
 	/* ========== Simple Debugging Options ============ */
 	/* ================================================ */
 
+	// TODO GeminiEMFSupplier: Use proper logging infrastructure
+
 	protected void trace(String str) {
-		 if (!trace)
-		 return;
+		if (!trace)
+			return;
 		System.err.println("[GEMINI_EXT][" + getClass().getSimpleName() + "] " + str);
 	}
 

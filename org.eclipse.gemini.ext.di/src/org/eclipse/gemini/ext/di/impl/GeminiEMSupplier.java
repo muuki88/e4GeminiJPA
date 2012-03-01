@@ -26,10 +26,8 @@ public class GeminiEMSupplier extends GeminiEMFSupplier {
 	
 	@Override
 	public Object get(IObjectDescriptor descriptor, IRequestor requestor, boolean track, boolean group) {
-		trace("get: " + requestor.getRequestingObject());
 		storeRequestor(getUnitName(descriptor, requestor.getRequestingObjectClass()), requestor);
 		EntityManagerFactory emf = getEMF(getUnitName(descriptor, requestor.getRequestingObjectClass()), getProperties(descriptor, requestor.getRequestingObjectClass()));
-		trace("emf: " + emf);
 		return (emf != null) ? emf.createEntityManager() : null;
 	}
 	

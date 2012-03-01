@@ -141,6 +141,7 @@ http://www.eclipse.org/legal/epl-v10.html
    <configurations>
       <plugin id="org.e4.gemini.test.data" autoStart="true" startLevel="4" />
       <plugin id="org.e4.gemini.test.data.two" autoStart="true" startLevel="4" />
+      <plugin id="org.eclipse.gemini.dbaccess.mysql" autoStart="true" startLevel="2" />
       <plugin id="org.eclipse.gemini.jpa" autoStart="true" startLevel="3" />
    </configurations>
 

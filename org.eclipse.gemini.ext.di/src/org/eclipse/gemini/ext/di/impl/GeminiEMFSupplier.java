@@ -11,7 +11,9 @@
 package org.eclipse.gemini.ext.di.impl;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -34,6 +36,8 @@ public class GeminiEMFSupplier extends ExtendedObjectSupplier {
 	private boolean trace = false;
 	private Map<String, EntityManagerFactory> emfs = new HashMap<String, EntityManagerFactory>();
 	private Map<String, EntityManagerFactoryBuilder> emfbs = new HashMap<String, EntityManagerFactoryBuilder>();
+	
+	private Map<String, Set<IRequestor>> requestors = new HashMap<String, Set<IRequestor>>();
 
 	/* ================================================ */
 	/* =========== Eclipse e4 DI Extender ============ */
@@ -47,6 +51,7 @@ public class GeminiEMFSupplier extends ExtendedObjectSupplier {
 
 	@Override
 	public Object get(IObjectDescriptor descriptor, IRequestor requestor, boolean track, boolean group) {
+		storeRequestor(getUnitName(descriptor, requestor.getRequestingObjectClass()), requestor);
 		return getEMF(getUnitName(descriptor, requestor.getRequestingObjectClass()),
 				getProperties(descriptor, requestor.getRequestingObjectClass()));
 	}
@@ -149,37 +154,66 @@ public class GeminiEMFSupplier extends ExtendedObjectSupplier {
 		}
 		emfs.clear();
 	}
+	
+	protected void storeRequestor(String pUnit, IRequestor req) {
+		if(!requestors.containsKey(pUnit))
+			requestors.put(pUnit, new HashSet<IRequestor>());
+		
+		requestors.get(pUnit).add(req);
+	}
+	
+
+	protected void updateRequestors(String pUnit) {
+		if(!requestors.containsKey(pUnit))
+			return;
+		
+		Set<IRequestor> reqs = requestors.get(pUnit);
+		Set<IRequestor> validReqs = new HashSet<IRequestor>();
+		
+		for (IRequestor requestor : reqs) {
+			if(requestor.isValid()) {
+				requestor.resolveArguments(false);
+				validReqs.add(requestor);
+			}
+		}
+		requestors.put(pUnit, validReqs);
+	}
 
 	/* ================================================ */
 	/* ======== Declarative Service Component ========= */
 	/* ================================================ */
 
 	protected void activate() {
-		trace("GeminiEMFSupplier service activated");
+		trace("service activated");
 	}
 
 	protected void bindEntityManagerFactory(EntityManagerFactory emf, Map<String, String> properties) {
-		trace("GeminiEMFSupplier.bindEntityManagerFactory() with " + properties);
+		trace("bindEntityManagerFactory() with " + properties);
 		emfs.put(getUnitName(properties), emf);
+		updateRequestors(getUnitName(properties));
 	}
 
 	protected void unbindEntityManagerFactory(EntityManagerFactory emf, Map<String, String> properties) {
-		trace("GeminiEMFSupplier.unbindEntityManagerFactory() with " + properties);
-		emf.close();
+		trace("unbindEntityManagerFactory() with " + properties);
+		if (emf.isOpen())
+			emf.close();
 		emfs.remove(getUnitName(properties));
+		updateRequestors(getUnitName(properties));
 	}
 
 	protected void bindEntityManagerFactoryBuilder(EntityManagerFactoryBuilder emfb, Map<String, String> properties) {
-		trace("GeminiEMFSupplier.bindEntityManagerFactoryBuilder() with " + properties);
+		trace("bindEntityManagerFactoryBuilder() with " + properties);
 		emfbs.put(getUnitName(properties), emfb);
+		updateRequestors(getUnitName(properties));
 	}
 
 	protected void unbindEntityManagerFactoryBuilder(EntityManagerFactoryBuilder emfb, Map<String, String> properties) {
-		trace("GeminiEMFSupplier.unbindEntityManagerFactoryBuilder() with " + properties);
+		trace("unbindEntityManagerFactoryBuilder() with " + properties);
 		EntityManagerFactoryBuilder old = emfbs.remove(getUnitName(properties));
 		if (old != emfb) {
 			throw new RuntimeException("Error while removing EntityManagerFactoryBuilder. Not identical! ");
 		}
+		updateRequestors(getUnitName(properties));
 	}
 
 	/* ================================================ */
@@ -187,12 +221,12 @@ public class GeminiEMFSupplier extends ExtendedObjectSupplier {
 	/* ================================================ */
 
 	protected void trace(String str) {
-		if (!trace)
-			return;
-		System.err.println("[GEMINI_EXT] " + str);
+//		if (!trace)
+//			return;
+		System.err.println("[GEMINI_EXT][" + getClass().getSimpleName() + "] "+ str);
 	}
 
 	protected void error(String str) {
-		System.err.println("[GEMINI_EXT] " + str);
+		System.err.println("[GEMINI_EXT][" + getClass().getSimpleName() + "] " + str);
 	}
 }

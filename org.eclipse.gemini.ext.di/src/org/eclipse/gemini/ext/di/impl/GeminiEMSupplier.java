@@ -25,7 +25,8 @@ import org.osgi.service.component.annotations.Component;
 public class GeminiEMSupplier extends GeminiEMFSupplier {
 	
 	@Override
-	public Object get(IObjectDescriptor descriptor, IRequestor requestor, boolean track, boolean group) {		
+	public Object get(IObjectDescriptor descriptor, IRequestor requestor, boolean track, boolean group) {	
+		storeRequestor(getUnitName(descriptor, requestor.getRequestingObjectClass()), requestor);
 		EntityManagerFactory emf = getEMF(getUnitName(descriptor, requestor.getRequestingObjectClass()), getProperties(descriptor, requestor.getRequestingObjectClass()));
 		return (emf != null) ? emf.createEntityManager() : null;
 	}

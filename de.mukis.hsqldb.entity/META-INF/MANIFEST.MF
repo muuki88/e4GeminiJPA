@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: HSQLDB Entity
+Bundle-SymbolicName: de.mukis.hsqldb.entity
+Bundle-Version: 1.0.0.qualifier
+Require-Bundle: javax.persistence;bundle-version="2.0.4"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Import-Package: org.osgi.framework;version="1.7.0"
+Export-Package: de.mukis.hsqldb.entity
+Meta-Persistence: META-INF/persistence.xml
+JPA-PersistenceUnits: school

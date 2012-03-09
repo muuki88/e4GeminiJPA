@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application:Application xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:advanced="http://www.eclipse.org/ui/2010/UIModel/application/ui/advanced" xmlns:application="http://www.eclipse.org/ui/2010/UIModel/application" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmlns:menu="http://www.eclipse.org/ui/2010/UIModel/application/ui/menu" xmi:id="_jo1OYGnoEeGgKIgMryy7Ow" elementId="org.eclipse.e4.ide.application" bindingContexts="_jo1OYWnoEeGgKIgMryy7Ow">
+  <children xsi:type="basic:TrimmedWindow" xmi:id="_jo1Od2noEeGgKIgMryy7Ow" label="de.mukis.hsqldb.rcp" width="500" height="400">
+    <children xsi:type="advanced:PerspectiveStack" xmi:id="_jo1Of2noEeGgKIgMryy7Ow">
+      <children xsi:type="advanced:Perspective" xmi:id="_jo11cGnoEeGgKIgMryy7Ow">
+        <children xsi:type="basic:PartSashContainer" xmi:id="_jo11cWnoEeGgKIgMryy7Ow">
+          <children xsi:type="basic:PartStack" xmi:id="_jo11cmnoEeGgKIgMryy7Ow"/>
+        </children>
+      </children>
+    </children>
+    <mainMenu xmi:id="_jo1OeGnoEeGgKIgMryy7Ow" elementId="menu:org.eclipse.ui.main.menu">
+      <children xsi:type="menu:Menu" xmi:id="_jo1OeWnoEeGgKIgMryy7Ow" label="File">
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_jo1OemnoEeGgKIgMryy7Ow" label="Open" iconURI="platform:/plugin/de.mukis.hsqldb.rcp/icons/sample.gif" command="_jo1ObmnoEeGgKIgMryy7Ow"/>
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_jo1Oe2noEeGgKIgMryy7Ow" label="Save" iconURI="platform:/plugin/de.mukis.hsqldb.rcp/icons/save_edit.gif" command="_jo1OcWnoEeGgKIgMryy7Ow"/>
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_jo1OfGnoEeGgKIgMryy7Ow" label="Quit" command="_jo1OamnoEeGgKIgMryy7Ow"/>
+      </children>
+      <children xsi:type="menu:Menu" xmi:id="_jo1OfWnoEeGgKIgMryy7Ow" label="Help">
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_jo1OfmnoEeGgKIgMryy7Ow" label="About" command="_jo1OdGnoEeGgKIgMryy7Ow"/>
+      </children>
+    </mainMenu>
+    <trimBars xmi:id="_jo11c2noEeGgKIgMryy7Ow">
+      <children xsi:type="menu:ToolBar" xmi:id="_jo11dGnoEeGgKIgMryy7Ow" elementId="toolbar:org.eclipse.ui.main.toolbar">
+        <children xsi:type="menu:HandledToolItem" xmi:id="_jo11dWnoEeGgKIgMryy7Ow" iconURI="platform:/plugin/de.mukis.hsqldb.rcp/icons/sample.gif" command="_jo1ObmnoEeGgKIgMryy7Ow"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_jo11dmnoEeGgKIgMryy7Ow" iconURI="platform:/plugin/de.mukis.hsqldb.rcp/icons/save_edit.gif" command="_jo1OcWnoEeGgKIgMryy7Ow"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_TTqvEGnuEeGgKIgMryy7Ow" iconURI="platform:/plugin/de.mukis.hsqldb.rcp/icons/add-student_16.png" command="_LkFNMGnuEeGgKIgMryy7Ow"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_h8AxIGnxEeGgKIgMryy7Ow" label="+School" command="_bX7ZEGnxEeGgKIgMryy7Ow"/>
+      </children>
+    </trimBars>
+  </children>
+  <handlers xmi:id="_jo1Oa2noEeGgKIgMryy7Ow" contributionURI="bundleclass://de.mukis.hsqldb.rcp/de.mukis.hsqldb.rcp.handlers.QuitHandler" command="_jo1OamnoEeGgKIgMryy7Ow"/>
+  <handlers xmi:id="_jo1Ob2noEeGgKIgMryy7Ow" contributionURI="bundleclass://de.mukis.hsqldb.rcp/de.mukis.hsqldb.rcp.handlers.OpenHandler" command="_jo1ObmnoEeGgKIgMryy7Ow"/>
+  <handlers xmi:id="_jo1OcmnoEeGgKIgMryy7Ow" contributionURI="bundleclass://de.mukis.hsqldb.rcp/de.mukis.hsqldb.rcp.handlers.SaveHandler" command="_jo1OcWnoEeGgKIgMryy7Ow"/>
+  <handlers xmi:id="_jo1OdWnoEeGgKIgMryy7Ow" contributionURI="bundleclass://de.mukis.hsqldb.rcp/de.mukis.hsqldb.rcp.handlers.AboutHandler" command="_jo1OdGnoEeGgKIgMryy7Ow"/>
+  <handlers xmi:id="_P1qXIGnuEeGgKIgMryy7Ow" contributionURI="bundleclass://de.mukis.hsqldb.rcp/de.mukis.hsqldb.rcp.handlers.AddStudentHandler" command="_LkFNMGnuEeGgKIgMryy7Ow"/>
+  <handlers xmi:id="_eMS-IGnxEeGgKIgMryy7Ow" contributionURI="bundleclass://de.mukis.hsqldb.rcp/de.mukis.hsqldb.rcp.handlers.AddSchoolWithStudentsHandler" command="_bX7ZEGnxEeGgKIgMryy7Ow"/>
+  <bindingTables xmi:id="_jo1ObGnoEeGgKIgMryy7Ow" bindingContext="_jo1OYWnoEeGgKIgMryy7Ow">
+    <bindings xmi:id="_jo1ObWnoEeGgKIgMryy7Ow" keySequence="Ctrl+Q" command="_jo1OamnoEeGgKIgMryy7Ow"/>
+    <bindings xmi:id="_jo1OcGnoEeGgKIgMryy7Ow" keySequence="Ctrl+O" command="_jo1ObmnoEeGgKIgMryy7Ow"/>
+    <bindings xmi:id="_jo1Oc2noEeGgKIgMryy7Ow" keySequence="Ctrl+S" command="_jo1OcWnoEeGgKIgMryy7Ow"/>
+    <bindings xmi:id="_jo1OdmnoEeGgKIgMryy7Ow" keySequence="Ctrl+A" command="_jo1OdGnoEeGgKIgMryy7Ow"/>
+  </bindingTables>
+  <rootContext xmi:id="_jo1OYWnoEeGgKIgMryy7Ow" elementId="org.eclipse.ui.contexts.dialogAndWindow" name="In Dialog and Windows">
+    <children xmi:id="_jo1OYmnoEeGgKIgMryy7Ow" elementId="org.eclipse.ui.contexts.window" name="In Windows"/>
+    <children xmi:id="_jo1OY2noEeGgKIgMryy7Ow" elementId="org.eclipse.ui.contexts.dialog" name="In Dialogs"/>
+  </rootContext>
+  <commands xmi:id="_jo1OamnoEeGgKIgMryy7Ow" elementId="de.mukis.hsqldb.rcp.quitCommand" commandName="quitCommand"/>
+  <commands xmi:id="_jo1ObmnoEeGgKIgMryy7Ow" elementId="de.mukis.hsqldb.rcp.openCommand" commandName="openCommand"/>
+  <commands xmi:id="_jo1OcWnoEeGgKIgMryy7Ow" elementId="de.mukis.hsqldb.rcp.saveCommand" commandName="saveCommand"/>
+  <commands xmi:id="_jo1OdGnoEeGgKIgMryy7Ow" elementId="de.mukis.hsqldb.rcp.aboutCommand" commandName="aboutCommand"/>
+  <commands xmi:id="_LkFNMGnuEeGgKIgMryy7Ow" elementId="de.mukis.hsqldb.rcp.addStudentCommand" commandName="addStudentCommand"/>
+  <commands xmi:id="_bX7ZEGnxEeGgKIgMryy7Ow" elementId="de.mukis.hsqldb.rcp.addSchoolCommand" commandName="addSchoolCommand"/>
+  <addons xmi:id="_jo1OZGnoEeGgKIgMryy7Ow" elementId="org.eclipse.e4.core.commands.service" contributionURI="bundleclass://org.eclipse.e4.core.commands/org.eclipse.e4.core.commands.CommandServiceAddon"/>
+  <addons xmi:id="_jo1OZWnoEeGgKIgMryy7Ow" elementId="org.eclipse.e4.ui.contexts.service" contributionURI="bundleclass://org.eclipse.e4.ui.services/org.eclipse.e4.ui.services.ContextServiceAddon"/>
+  <addons xmi:id="_jo1OZmnoEeGgKIgMryy7Ow" elementId="org.eclipse.e4.ui.bindings.service" contributionURI="bundleclass://org.eclipse.e4.ui.bindings/org.eclipse.e4.ui.bindings.BindingServiceAddon"/>
+  <addons xmi:id="_jo1OZ2noEeGgKIgMryy7Ow" elementId="org.eclipse.e4.ui.workbench.commands.model" contributionURI="bundleclass://org.eclipse.e4.ui.workbench/org.eclipse.e4.ui.internal.workbench.addons.CommandProcessingAddon"/>
+  <addons xmi:id="_jo1OaGnoEeGgKIgMryy7Ow" elementId="org.eclipse.e4.ui.workbench.contexts.model" contributionURI="bundleclass://org.eclipse.e4.ui.workbench/org.eclipse.e4.ui.internal.workbench.addons.ContextProcessingAddon"/>
+  <addons xmi:id="_jo1OaWnoEeGgKIgMryy7Ow" elementId="org.eclipse.e4.ui.workbench.bindings.model" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.swt/org.eclipse.e4.ui.workbench.swt.util.BindingProcessingAddon"/>
+</application:Application>

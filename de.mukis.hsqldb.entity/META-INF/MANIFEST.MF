@@ -8,4 +8,3 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Import-Package: org.osgi.framework;version="1.7.0"
 Export-Package: de.mukis.hsqldb.entity
 Meta-Persistence: META-INF/persistence.xml
-JPA-PersistenceUnits: school

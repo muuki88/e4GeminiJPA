@@ -17,13 +17,14 @@
       <children xsi:type="menu:Menu" xmi:id="_jo1OfWnoEeGgKIgMryy7Ow" label="Help">
         <children xsi:type="menu:HandledMenuItem" xmi:id="_jo1OfmnoEeGgKIgMryy7Ow" label="About" command="_jo1OdGnoEeGgKIgMryy7Ow"/>
       </children>
+      <children xsi:type="menu:Menu" xmi:id="_h--YkGzxEeGs6_VwEA5FpA" label="Database">
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_jjam0GzxEeGs6_VwEA5FpA" label="DataTherapyResult" command="_ZjvRoGzxEeGs6_VwEA5FpA"/>
+      </children>
     </mainMenu>
     <trimBars xmi:id="_jo11c2noEeGgKIgMryy7Ow">
       <children xsi:type="menu:ToolBar" xmi:id="_jo11dGnoEeGgKIgMryy7Ow" elementId="toolbar:org.eclipse.ui.main.toolbar">
         <children xsi:type="menu:HandledToolItem" xmi:id="_jo11dWnoEeGgKIgMryy7Ow" iconURI="platform:/plugin/de.mukis.hsqldb.rcp/icons/sample.gif" command="_jo1ObmnoEeGgKIgMryy7Ow"/>
         <children xsi:type="menu:HandledToolItem" xmi:id="_jo11dmnoEeGgKIgMryy7Ow" iconURI="platform:/plugin/de.mukis.hsqldb.rcp/icons/save_edit.gif" command="_jo1OcWnoEeGgKIgMryy7Ow"/>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_TTqvEGnuEeGgKIgMryy7Ow" iconURI="platform:/plugin/de.mukis.hsqldb.rcp/icons/add-student_16.png" command="_LkFNMGnuEeGgKIgMryy7Ow"/>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_h8AxIGnxEeGgKIgMryy7Ow" label="+School" command="_bX7ZEGnxEeGgKIgMryy7Ow"/>
       </children>
     </trimBars>
   </children>
@@ -31,8 +32,7 @@
   <handlers xmi:id="_jo1Ob2noEeGgKIgMryy7Ow" contributionURI="bundleclass://de.mukis.hsqldb.rcp/de.mukis.hsqldb.rcp.handlers.OpenHandler" command="_jo1ObmnoEeGgKIgMryy7Ow"/>
   <handlers xmi:id="_jo1OcmnoEeGgKIgMryy7Ow" contributionURI="bundleclass://de.mukis.hsqldb.rcp/de.mukis.hsqldb.rcp.handlers.SaveHandler" command="_jo1OcWnoEeGgKIgMryy7Ow"/>
   <handlers xmi:id="_jo1OdWnoEeGgKIgMryy7Ow" contributionURI="bundleclass://de.mukis.hsqldb.rcp/de.mukis.hsqldb.rcp.handlers.AboutHandler" command="_jo1OdGnoEeGgKIgMryy7Ow"/>
-  <handlers xmi:id="_P1qXIGnuEeGgKIgMryy7Ow" contributionURI="bundleclass://de.mukis.hsqldb.rcp/de.mukis.hsqldb.rcp.handlers.AddStudentHandler" command="_LkFNMGnuEeGgKIgMryy7Ow"/>
-  <handlers xmi:id="_eMS-IGnxEeGgKIgMryy7Ow" contributionURI="bundleclass://de.mukis.hsqldb.rcp/de.mukis.hsqldb.rcp.handlers.AddSchoolWithStudentsHandler" command="_bX7ZEGnxEeGgKIgMryy7Ow"/>
+  <handlers xmi:id="_byJC4GzxEeGs6_VwEA5FpA" contributionURI="bundleclass://de.mukis.hsqldb.rcp/de.mukis.hsqldb.rcp.handlers.DataTherapyResultHandler" command="_ZjvRoGzxEeGs6_VwEA5FpA"/>
   <bindingTables xmi:id="_jo1ObGnoEeGgKIgMryy7Ow" bindingContext="_jo1OYWnoEeGgKIgMryy7Ow">
     <bindings xmi:id="_jo1ObWnoEeGgKIgMryy7Ow" keySequence="Ctrl+Q" command="_jo1OamnoEeGgKIgMryy7Ow"/>
     <bindings xmi:id="_jo1OcGnoEeGgKIgMryy7Ow" keySequence="Ctrl+O" command="_jo1ObmnoEeGgKIgMryy7Ow"/>
@@ -47,8 +47,7 @@
   <commands xmi:id="_jo1ObmnoEeGgKIgMryy7Ow" elementId="de.mukis.hsqldb.rcp.openCommand" commandName="openCommand"/>
   <commands xmi:id="_jo1OcWnoEeGgKIgMryy7Ow" elementId="de.mukis.hsqldb.rcp.saveCommand" commandName="saveCommand"/>
   <commands xmi:id="_jo1OdGnoEeGgKIgMryy7Ow" elementId="de.mukis.hsqldb.rcp.aboutCommand" commandName="aboutCommand"/>
-  <commands xmi:id="_LkFNMGnuEeGgKIgMryy7Ow" elementId="de.mukis.hsqldb.rcp.addStudentCommand" commandName="addStudentCommand"/>
-  <commands xmi:id="_bX7ZEGnxEeGgKIgMryy7Ow" elementId="de.mukis.hsqldb.rcp.addSchoolCommand" commandName="addSchoolCommand"/>
+  <commands xmi:id="_ZjvRoGzxEeGs6_VwEA5FpA" elementId="de.mukis.hsqldb.rcp.addData" commandName="AddData"/>
   <addons xmi:id="_jo1OZGnoEeGgKIgMryy7Ow" elementId="org.eclipse.e4.core.commands.service" contributionURI="bundleclass://org.eclipse.e4.core.commands/org.eclipse.e4.core.commands.CommandServiceAddon"/>
   <addons xmi:id="_jo1OZWnoEeGgKIgMryy7Ow" elementId="org.eclipse.e4.ui.contexts.service" contributionURI="bundleclass://org.eclipse.e4.ui.services/org.eclipse.e4.ui.services.ContextServiceAddon"/>
   <addons xmi:id="_jo1OZmnoEeGgKIgMryy7Ow" elementId="org.eclipse.e4.ui.bindings.service" contributionURI="bundleclass://org.eclipse.e4.ui.bindings/org.eclipse.e4.ui.bindings.BindingServiceAddon"/>

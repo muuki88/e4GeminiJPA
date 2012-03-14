@@ -54,7 +54,7 @@ public class Patient {
 	@Temporal(TemporalType.DATE)
 	private Date therapystart;
 
-	@OneToMany(cascade = CascadeType.REMOVE)
+	@OneToMany(mappedBy = "patient", cascade = CascadeType.REMOVE)
 	private List<Therapy> therapies;
 
 	public Patient() {

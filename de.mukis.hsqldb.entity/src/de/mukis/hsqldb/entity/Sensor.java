@@ -24,19 +24,15 @@ public class Sensor {
 	@Column(unique = true)
 	private String sensorId;
 
-	@Column
 	private String name;
 
-	@Column
 	private String version;
 
-	@Column
 	private String defaultpath;
 
-	@Column
 	private String filePrefix;
 
-	@OneToMany(cascade = { CascadeType.REMOVE })
+	@OneToMany(mappedBy = "sensor", cascade = { CascadeType.REMOVE })
 	private List<Data> data;
 
 	protected Sensor() {

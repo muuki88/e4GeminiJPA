@@ -16,13 +16,13 @@ public class DataTherapyResultHandler extends AbstractTestHandler {
 	public void transaction(EntityManager em) throws Exception {
 		trace("[CREATING] Sensor");
 		em.getTransaction().begin();
-		Sensor sensor = new Sensor("MySensor", "123:Sensor", "1.0A");
+		Sensor sensor = new Sensor("MySensor", "123:Sensor:" + Math.random(), "1.0A");
 		em.persist(sensor);
 		em.getTransaction().commit();
 		
 		trace("[CREATING] Patient");
 		em.getTransaction().begin();
-		Patient patient = new Patient("Max", "Mustermann", "ABC123#1");
+		Patient patient = new Patient("Max", "Mustermann", "ABC123#" + Math.random());
 		em.persist(patient);
 		em.getTransaction().commit();
 		
@@ -52,7 +52,9 @@ public class DataTherapyResultHandler extends AbstractTestHandler {
 		trace("[Removing] Data");
 		em.getTransaction().begin();
 		em.remove(data);
+		em.refresh(therapy);
 		em.getTransaction().commit();
+		
 		printEntities(em);
 		
 		trace("[CREATING] TherapyResult2");
@@ -90,7 +92,7 @@ public class DataTherapyResultHandler extends AbstractTestHandler {
 		
 		trace("[REMOVING] Therapy");
 		em.getTransaction().begin();
-		therapy.getTherapyResults().clear();
+		therapy = em.find(Therapy.class, therapy.getId());
 		em.remove(therapy);
 		em.getTransaction().commit();
 		printEntities(em);

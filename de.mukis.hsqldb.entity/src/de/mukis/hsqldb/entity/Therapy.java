@@ -36,13 +36,21 @@ public class Therapy {
 	private String comment;
 
 	private int success;
-	
+
 	@ManyToOne
 	@JoinColumn(nullable = false)
 	private Patient patient;
 
-	@OneToMany
-	private List<TherapyResult>	therapyResults;
+	@OneToMany(mappedBy = "therapy", cascade = { CascadeType.REMOVE, CascadeType.PERSIST })
+	private List<TherapyResult> therapyResults;
+
+	/**
+	 * Dirty hack. To avoid a ConccurentModificationAction when
+	 * the remove command is cascaded to the TherapyResult entities this
+	 * flag is being set. TherapyResult only removes itself from the
+	 * therapy if this flag is false.
+	 */
+	transient boolean removed = false;
 	
 	protected Therapy() {
 	}
@@ -50,12 +58,12 @@ public class Therapy {
 	public Therapy(Patient patient) {
 		this.patient = patient;
 	}
-	
-//	@PreRemove
-//	protected void preRemove() {
-//		//Cascading leads to concurrent modification
-//		therapyResults.clear();
-//	}
+
+	@PreRemove
+	private void preRemove() {
+		//TherapyResult should not remove themselfs from this entity
+		removed = true;
+	}
 
 	public void updateSuccess() {
 		if (!therapyResults.isEmpty()) {
@@ -129,27 +137,29 @@ public class Therapy {
 	public List<TherapyResult> getTherapyResults() {
 		return therapyResults;
 	}
-	
+
 	protected void setTherapyResults(List<TherapyResult> therapyResults) {
 		this.therapyResults = therapyResults;
 	}
-	
+
 	public boolean addTherapyResult(TherapyResult therapyResult) {
-		if(therapyResults.contains(therapyResult))
+		if (therapyResults.contains(therapyResult))
 			return false;
 		boolean success = therapyResults.add(therapyResult);
-		if(!this.equals(therapyResult.getTherapy()))
+		if (!this.equals(therapyResult.getTherapy()))
 			therapyResult.setTherapy(this);
 		return success;
 	}
-	
+
 	public void removeTherapyResult(TherapyResult therapyResult) {
 		therapyResults.remove(therapyResult);
 	}
 
 	@Override
 	public String toString() {
-		return "Therapy [id=" + id + ", patient=" + patient + ", therapyResults=" + therapyResults + "]";
+
+		return "Therapy [id=" + id + ", patient=" + patient + ", therapyResults=" +  "[" + therapyResults.size() + "]["
+				+ therapyResults + "]";
 	}
 
 	@Override
@@ -173,6 +183,5 @@ public class Therapy {
 			return false;
 		return true;
 	}
-	
-	
+
 }

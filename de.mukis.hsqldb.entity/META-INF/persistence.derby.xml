@@ -4,8 +4,9 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence persistence_2_0.xsd"
 	version="2.0">
 
-	<persistence-unit name="medmon-hsqldb"
+	<persistence-unit name="medmon-derby"
 		transaction-type="RESOURCE_LOCAL">
+		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 		<class>de.mukis.hsqldb.entity.Patient</class>
 		<class>de.mukis.hsqldb.entity.Data</class>
 		<class>de.mukis.hsqldb.entity.Therapy</class>
@@ -14,8 +15,8 @@
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 		<properties>
 			<!-- Embedded HSQLDB Login -->
-			<property name="javax.persistence.jdbc.driver" value="org.hsqldb.jdbc.JDBCDriver" />
-			<property name="javax.persistence.jdbc.url" value="jdbc:hsqldb:medmon-hsqldb" />
+			<property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:derby:medmon;create=true" />
 
 			<property name="eclipselink.jdbc.read-connections.min"
 				value="1" />
@@ -26,7 +27,7 @@
 			<!-- Database Schema Creation -->
 			<property name="eclipselink.ddl-generation" value="drop-and-create-tables" />
 			<property name="eclipselink.ddl-generation.output-mode"
-				value="database" />
+				value="both" />
 
 			<!-- Disable Weaving -->
 			<property name="eclipselink.weaving" value="false" />

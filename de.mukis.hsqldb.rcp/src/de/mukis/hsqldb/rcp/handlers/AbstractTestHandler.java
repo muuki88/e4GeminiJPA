@@ -12,7 +12,7 @@ import org.eclipse.swt.widgets.Shell;
 abstract public class AbstractTestHandler {
 
 	@Inject
-	@GeminiPersistenceContext(unitName = "medmon-derby")
+	@GeminiPersistenceContext(unitName = "medmon-hsqldb")
 	private EntityManager em;
 
 	@Execute

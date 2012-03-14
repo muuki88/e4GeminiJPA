@@ -32,10 +32,12 @@ public class TherapyResult {
 
 	@PreRemove
 	protected void preRemove() {
-		// Foreignkey must be set to null
-		data.setTherapyResult(null);
-		therapy.removeTherapyResult(this);
-
+		//CONSTRAINT ON DELETE SET NULL
+		if (data != null)
+			data.setTherapyResult(null);
+		//Remove itself from the therapy entity, but only if the therapy entity isn't removed itself.
+		if (therapy != null && !therapy.removed)
+			therapy.removeTherapyResult(this);
 	}
 
 	public long getId() {
@@ -102,7 +104,7 @@ public class TherapyResult {
 	@Override
 	public String toString() {
 		return "TherapyResult [id=" + id + ", timestamp=" + timestamp + ", comment=" + comment + ", success=" + success + ", data="
-				+ data.getId() + ", therapy=" + (therapy == null ? "null" : therapy.getId()) + "]";
+				+ (data == null ? "null" : data.getId()) + ", therapy=" + (therapy == null ? "null" : therapy.getId()) + "]";
 	}
 
 	@Override

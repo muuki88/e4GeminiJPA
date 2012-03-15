@@ -1,5 +1,6 @@
 package de.mukis.hsqldb.entity;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -45,24 +46,25 @@ public class Therapy {
 	private List<TherapyResult> therapyResults;
 
 	/**
-	 * Dirty hack. To avoid a ConccurentModificationAction when
-	 * the remove command is cascaded to the TherapyResult entities this
-	 * flag is being set. TherapyResult only removes itself from the
-	 * therapy if this flag is false.
+	 * Dirty hack. To avoid a ConccurentModificationAction when the remove
+	 * command is cascaded to the TherapyResult entities this flag is being set.
+	 * TherapyResult only removes itself from the therapy if this flag is false.
 	 */
-	transient boolean removed = false;
-	
-	protected Therapy() {
+	transient boolean removed;
+
+	public Therapy() {
 	}
 
 	public Therapy(Patient patient) {
-		this.patient = patient;
+		setPatient(patient);
 	}
 
 	@PreRemove
 	private void preRemove() {
-		//TherapyResult should not remove themselfs from this entity
+		// TherapyResult should not remove themselves from this entity
 		removed = true;
+		if (!patient.remove)
+			patient.removeTherapy(this);
 	}
 
 	public void updateSuccess() {
@@ -132,6 +134,8 @@ public class Therapy {
 
 	public void setPatient(Patient patient) {
 		this.patient = patient;
+		if (patient != null)
+			patient.addTherapy(this);
 	}
 
 	public List<TherapyResult> getTherapyResults() {
@@ -143,23 +147,25 @@ public class Therapy {
 	}
 
 	public boolean addTherapyResult(TherapyResult therapyResult) {
-		if (therapyResults.contains(therapyResult))
+		if (therapyResults == null)
+			therapyResults = new ArrayList<>();
+		if (getTherapyResults().contains(therapyResult))
 			return false;
-		boolean success = therapyResults.add(therapyResult);
+		boolean success = getTherapyResults().add(therapyResult);
 		if (!this.equals(therapyResult.getTherapy()))
 			therapyResult.setTherapy(this);
 		return success;
 	}
 
 	public void removeTherapyResult(TherapyResult therapyResult) {
-		therapyResults.remove(therapyResult);
+		getTherapyResults().remove(therapyResult);
 	}
 
 	@Override
 	public String toString() {
 
-		return "Therapy [id=" + id + ", patient=" + patient + ", therapyResults=" +  "[" + therapyResults.size() + "]["
-				+ therapyResults + "]";
+		return "Therapy [id=" + id + ", patient=" + patient + ", therapyResults=" + "["
+				+ (getTherapyResults() == null ? "-" : getTherapyResults().size()) + "][" + getTherapyResults() + "]";
 	}
 
 	@Override

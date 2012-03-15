@@ -27,7 +27,7 @@ public class TherapyResult {
 	@OneToOne(cascade = { CascadeType.PERSIST, CascadeType.REFRESH })
 	private Data data;
 
-	@ManyToOne
+	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH})
 	private Therapy therapy;
 
 	@PreRemove

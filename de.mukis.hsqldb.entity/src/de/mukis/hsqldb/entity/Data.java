@@ -31,6 +31,17 @@ public class Data {
 	@JoinColumn(nullable = false)
 	private Sensor sensor;
 
+	@ManyToOne
+	private Patient patient;
+
+	
+	@PreRemove
+	protected void preRemove() {
+		sensor.removeData(this);
+		if (patient != null && !patient.remove)
+			patient.removeData(this);
+	}
+
 	public long getId() {
 		return id;
 	}
@@ -78,20 +89,23 @@ public class Data {
 	public void setTherapyResult(TherapyResult therapyResult) {
 		this.therapyResult = therapyResult;
 	}
-	
+
 	public Sensor getSensor() {
 		return sensor;
 	}
 
 	public void setSensor(Sensor sensor) {
 		this.sensor = sensor;
-		if(sensor != null)
+		if (sensor != null)
 			sensor.addData(this);
 	}
 
-	@PreRemove
-	protected void preRemove() {
-		sensor.removeData(this);
+	public Patient getPatient() {
+		return patient;
+	}
+
+	public void setPatient(Patient patient) {
+		this.patient = patient;
 	}
 
 	@Override

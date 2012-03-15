@@ -97,10 +97,89 @@ public class DataTherapyResultHandler extends AbstractTestHandler {
 		em.getTransaction().commit();
 		printEntities(em);
 		
+		trace("[CREATING] TherapyResult4/5");
+		em.getTransaction().begin();
+		Therapy therapy2 = new Therapy(patient);
+		em.persist(therapy2);
+		
+		
+		TherapyResult therapyResult4 = new TherapyResult();
+		TherapyResult therapyResult5 = new TherapyResult();
+		
+		em.persist(therapyResult4);
+		em.persist(therapyResult5);
+		
+		therapyResult4.setData(data3);
+		therapyResult4.setTherapy(therapy2); 
+
+		therapyResult5.setData(data2);
+		therapyResult5.setTherapy(therapy2); 
+		
+		em.getTransaction().commit();
+		printEntities(em);
+		
+		trace("[REMOVE] Patient");
+		em.getTransaction().begin();
+		em.remove(patient);
+		em.getTransaction().commit();
+		printEntities(em);
+	}
+	
+	private void transaction2(EntityManager em) throws Exception{
+		trace("[CREATING] Sensor");
+		em.getTransaction().begin();
+		Sensor sensor = new Sensor("MySensor", "123:Sensor:" + Math.random(), "1.0A");
+		em.persist(sensor);
+		em.getTransaction().commit();
+		
+		trace("[CREATING] Patient");
+		em.getTransaction().begin();
+		Patient patient = new Patient("Max", "Mustermann", "ABC123#" + Math.random());
+		em.persist(patient);
+		em.getTransaction().commit();
+		
+		
+		trace("[CREATING] Therapy");
+		em.getTransaction().begin();
+		Therapy therapy = new Therapy(patient);
+		em.persist(therapy);
+		em.getTransaction().commit();
+		
+		printEntities(em);
+		
+		trace("[CREATING] TherapyResult4/5");
+		em.getTransaction().begin();
+		TherapyResult therapyResult4 = new TherapyResult();
+		TherapyResult therapyResult5 = new TherapyResult();
+		Data data1 = new Data();
+		Data data2 = new Data();
+		data1.setSensor(sensor);
+		data2.setSensor(sensor);
+		
+		em.persist(data1);
+		em.persist(data2);
+		
+		em.persist(therapyResult4);
+		em.persist(therapyResult5);
+		
+		therapyResult4.setData(data1);
+		therapyResult4.setTherapy(therapy); 
+
+		therapyResult5.setData(data2);
+		therapyResult5.setTherapy(therapy); 
+		
+		em.getTransaction().commit();
+		printEntities(em);
+		
+		trace("[REMOVING] Patient");
+		em.getTransaction().begin();
+		em.remove(patient);
+		em.getTransaction().commit();
+		printEntities(em);
 	}
 	
 
-	private void printEntities(EntityManager em) {
+	private void printEntities(EntityManager em) throws Exception {
 		em.getTransaction().begin();
 		
 		List<Patient> patient = em.createNamedQuery("Patient.findAll").getResultList();

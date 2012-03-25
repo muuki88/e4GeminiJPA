@@ -2,7 +2,11 @@ package de.mukis.hsqldb.rcp.handlers;
 
 import java.util.List;
 
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
+
+import org.eclipse.core.runtime.preferences.IEclipsePreferences;
+import org.eclipse.e4.core.di.extensions.Preference;
 
 import de.mukis.hsqldb.entity.Data;
 import de.mukis.hsqldb.entity.Patient;
@@ -16,7 +20,8 @@ public class DataTherapyResultHandler extends AbstractTestHandler {
 	public void transaction(EntityManager em) throws Exception {
 		trace("[CREATING] Sensor");
 		em.getTransaction().begin();
-		Sensor sensor = new Sensor("MySensor", "123:Sensor:" + Math.random(), "1.0A");
+		String sensorId = "123:Sensor:" + Math.random();
+		Sensor sensor = new Sensor("MySensor", sensorId, "1.0A");
 		em.persist(sensor);
 		em.getTransaction().commit();
 		
@@ -25,6 +30,10 @@ public class DataTherapyResultHandler extends AbstractTestHandler {
 		Patient patient = new Patient("Max", "Mustermann", "ABC123#" + Math.random());
 		em.persist(patient);
 		em.getTransaction().commit();
+		
+		List<Sensor> sensors = em.createNamedQuery("Sensor.findBySensorId")
+		.setParameter("sensorId", sensorId)
+		.getResultList();
 		
 		
 		trace("[CREATING] Therapy");
@@ -178,7 +187,13 @@ public class DataTherapyResultHandler extends AbstractTestHandler {
 		printEntities(em);
 	}
 	
+//	@Inject
+//	private void createPreferences(@Preference IEclipsePreferences node) {
+//		System.err.println("Create Preferences: " + node.absolutePath());
+//		node.put("application.appfolder", System.getProperty("user.home"));
+//	}
 
+	@SuppressWarnings("unchecked")
 	private void printEntities(EntityManager em) throws Exception {
 		em.getTransaction().begin();
 		

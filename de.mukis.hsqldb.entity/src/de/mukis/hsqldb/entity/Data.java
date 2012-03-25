@@ -2,7 +2,24 @@ package de.mukis.hsqldb.entity;
 
 import java.util.Date;
 
-import javax.persistence.*;
+import javax.inject.Inject;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
+import javax.persistence.PrePersist;
+import javax.persistence.PreRemove;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.eclipse.e4.core.di.extensions.Preference;
 
 @Entity
 @NamedQueries({ @NamedQuery(name = "Data.findAll", query = "SELECT d FROM Data d") })
@@ -33,7 +50,19 @@ public class Data {
 
 	@ManyToOne
 	private Patient patient;
-
+	
+	/*========================== */
+	/*===== Configuration ====== */
+	/*========================== */
+	
+//	@Inject
+//	@Preference(nodePath="application.appfolder")
+//	private transient String appfolder;
+//	
+//	@PrePersist
+//	protected void prePersist() {
+//		System.err.println("PRE PERIST in " + appfolder);
+//	}
 	
 	@PreRemove
 	protected void preRemove() {

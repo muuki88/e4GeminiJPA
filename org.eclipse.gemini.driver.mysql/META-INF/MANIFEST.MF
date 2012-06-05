@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Mysql JDBC Connector
 Bundle-SymbolicName: org.eclipse.gemini.driver.mysql
-Bundle-Version: 5.1.17.qualifier
+Bundle-Version: 5.1.17
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ClassPath: mysql-connector-java-5.1.17-bin.jar
 Export-Package: com.mysql.jdbc;version="5.1.17",

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?pde version="3.8"?><target name="org.e4.gemini.target" sequenceNumber="1">
+<locations>
+<location path="${eclipse_home}" type="Profile"/>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="slicer" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.gemini.ext.di.feature.feature.group" version="1.0.0.201207101027"/>
+<repository location="http://repository.mukis.de/p2/org.eclipse.gemini.ext.di/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="slicer" includeSource="true" type="InstallableUnit">
+<unit id="ch.qos.logback.feature.feature.group" version="1.0.7"/>
+<unit id="org.slf4j.feature.feature.group" version="1.6.6"/>
+<repository location="http://logback.qos.ch/p2"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="slicer" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.gemini.dbaccess.feature.feature.group" version="1.1.0.201209190714"/>
+<unit id="org.eclipse.gemini.dbaccess.h2.feature.feature.group" version="1.1.0.201209190714"/>
+<unit id="org.eclipse.gemini.dbaccess.mysql.feature.feature.group" version="1.1.0.201209190714"/>
+<repository location="http://download.eclipse.org/gemini/dbaccess/updates/1.1-M3"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="slicer" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.gemini.jpa.feature.feature.group" version="1.1.0.RELEASE"/>
+<repository location="http://download.eclipse.org/gemini/updates/jpa/1.1.0"/>
+</location>
+</locations>
+</target>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin>
+
+   <extension
+         id="product"
+         point="org.eclipse.core.runtime.products">
+      <product
+            name="org.e4.gemini.derby.rcp"
+            application="org.eclipse.e4.ui.workbench.swt.E4Application">
+         <property
+               name="appName"
+               value="org.e4.gemini.derby.rcp">
+         </property>
+         <property
+               name="applicationXMI"
+               value="org.e4.gemini.derby.rcp/Application.e4xmi">
+         </property>
+         <property
+               name="applicationCSS"
+               value="platform:/plugin/org.e4.gemini.derby.rcp/css/default.css">
+         </property>
+      </product>
+   </extension>
+
+</plugin>

@@ -12,10 +12,10 @@
       <children xsi:type="menu:Menu" xmi:id="_Fa0f8lcWEeG0Z5nzWlsSYQ" label="File">
         <children xsi:type="menu:HandledMenuItem" xmi:id="_Fa0f9FcWEeG0Z5nzWlsSYQ" label="Save Preferences" iconURI="platform:/plugin/org.e4.gemini.derby.rcp/icons/save_edit.gif" command="_LreZMFjYEeGjMop8bFpl0g"/>
         <children xsi:type="menu:HandledMenuItem" xmi:id="_Fa0f81cWEeG0Z5nzWlsSYQ" label="Open" iconURI="platform:/plugin/org.e4.gemini.derby.rcp/icons/sample.gif" command="_Faz47lcWEeG0Z5nzWlsSYQ"/>
-        <children xsi:type="menu:HandledMenuItem" xmi:id="_Fa0f9VcWEeG0Z5nzWlsSYQ" label="Quit" command="_Faz46lcWEeG0Z5nzWlsSYQ"/>
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_Fa0f9VcWEeG0Z5nzWlsSYQ" label="Quit"/>
       </children>
       <children xsi:type="menu:Menu" xmi:id="_Fa0f9lcWEeG0Z5nzWlsSYQ" label="Help">
-        <children xsi:type="menu:HandledMenuItem" xmi:id="_Fa0f91cWEeG0Z5nzWlsSYQ" label="About" command="_Faz49FcWEeG0Z5nzWlsSYQ"/>
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_Fa0f91cWEeG0Z5nzWlsSYQ" label="About"/>
       </children>
     </mainMenu>
     <trimBars xmi:id="_Fa0f_FcWEeG0Z5nzWlsSYQ">
@@ -26,26 +26,20 @@
       </children>
     </trimBars>
   </children>
-  <handlers xmi:id="_Faz461cWEeG0Z5nzWlsSYQ" contributionURI="bundleclass://org.e4.gemini.derby.rcp/org.e4.gemini.rcp.handlers.QuitHandler" command="_Faz46lcWEeG0Z5nzWlsSYQ"/>
   <handlers xmi:id="_Faz471cWEeG0Z5nzWlsSYQ" contributionURI="bundleclass://org.e4.gemini.derby.rcp/org.e4.gemini.rcp.handlers.OpenHandler" command="_Faz47lcWEeG0Z5nzWlsSYQ"/>
-  <handlers xmi:id="_Faz48lcWEeG0Z5nzWlsSYQ" contributionURI="bundleclass://org.e4.gemini.rcp/org.e4.gemini.rcp.handlers.SaveHandler" command="_Faz48VcWEeG0Z5nzWlsSYQ"/>
-  <handlers xmi:id="_Faz49VcWEeG0Z5nzWlsSYQ" contributionURI="bundleclass://org.e4.gemini.derby.rcp/org.e4.gemini.rcp.handlers.AboutHandler" command="_Faz49FcWEeG0Z5nzWlsSYQ"/>
   <handlers xmi:id="_kil5MFjXEeGjMop8bFpl0g" elementId="savePreferences" contributionURI="bundleclass://org.e4.gemini.derby.rcp/org.e4.gemini.rcp.handlers.SavePreferencesHandler" command="_LreZMFjYEeGjMop8bFpl0g"/>
   <handlers xmi:id="_ltIxwF5eEeGyered-SDzFw" elementId="savePerson" contributionURI="bundleclass://org.e4.gemini.derby.rcp/org.e4.gemini.rcp.handlers.SavePersonHandler" command="_g4yR8F5eEeGyered-SDzFw"/>
   <bindingTables xmi:id="_Faz47FcWEeG0Z5nzWlsSYQ" bindingContext="_Faz44VcWEeG0Z5nzWlsSYQ">
-    <bindings xmi:id="_Faz47VcWEeG0Z5nzWlsSYQ" keySequence="Ctrl+Q" command="_Faz46lcWEeG0Z5nzWlsSYQ"/>
+    <bindings xmi:id="_Faz47VcWEeG0Z5nzWlsSYQ" keySequence="Ctrl+Q"/>
     <bindings xmi:id="_Faz48FcWEeG0Z5nzWlsSYQ" keySequence="Ctrl+O" command="_Faz47lcWEeG0Z5nzWlsSYQ"/>
-    <bindings xmi:id="_Faz481cWEeG0Z5nzWlsSYQ" keySequence="Ctrl+S" command="_Faz48VcWEeG0Z5nzWlsSYQ"/>
-    <bindings xmi:id="_Faz49lcWEeG0Z5nzWlsSYQ" keySequence="Ctrl+A" command="_Faz49FcWEeG0Z5nzWlsSYQ"/>
+    <bindings xmi:id="_Faz481cWEeG0Z5nzWlsSYQ" keySequence="Ctrl+S"/>
+    <bindings xmi:id="_Faz49lcWEeG0Z5nzWlsSYQ" keySequence="Ctrl+A"/>
   </bindingTables>
   <rootContext xmi:id="_Faz44VcWEeG0Z5nzWlsSYQ" elementId="org.eclipse.ui.contexts.dialogAndWindow" name="In Dialog and Windows">
     <children xmi:id="_Faz44lcWEeG0Z5nzWlsSYQ" elementId="org.eclipse.ui.contexts.window" name="In Windows"/>
     <children xmi:id="_Faz441cWEeG0Z5nzWlsSYQ" elementId="org.eclipse.ui.contexts.dialog" name="In Dialogs"/>
   </rootContext>
-  <commands xmi:id="_Faz46lcWEeG0Z5nzWlsSYQ" elementId="org.e4.gemini.rcp.quitCommand" commandName="quitCommand"/>
   <commands xmi:id="_Faz47lcWEeG0Z5nzWlsSYQ" elementId="org.e4.gemini.rcp.openCommand" commandName="openCommand"/>
-  <commands xmi:id="_Faz48VcWEeG0Z5nzWlsSYQ" elementId="org.e4.gemini.rcp.saveCommand" commandName="saveCommand"/>
-  <commands xmi:id="_Faz49FcWEeG0Z5nzWlsSYQ" elementId="org.e4.gemini.rcp.aboutCommand" commandName="aboutCommand"/>
   <commands xmi:id="_LreZMFjYEeGjMop8bFpl0g" elementId="org.e4.gemini.rcp.savePreferences" commandName="savePreferences"/>
   <commands xmi:id="_g4yR8F5eEeGyered-SDzFw" elementId="org.e4.gemini.rcp.savePerson" commandName="savePerson"/>
   <addons xmi:id="_Faz45FcWEeG0Z5nzWlsSYQ" elementId="org.eclipse.e4.core.commands.service" contributionURI="bundleclass://org.eclipse.e4.core.commands/org.eclipse.e4.core.commands.CommandServiceAddon"/>

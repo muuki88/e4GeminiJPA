@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: DB models
+Bundle-SymbolicName: de.mukis.gemini.sample.model
+Bundle-Version: 0.0.1.qualifier
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Require-Bundle: javax.persistence;bundle-version="[2.0.0,3.0.0)"
+Export-Package: de.mukis.gemini.sample.model;version="0.0.1"
+Meta-Persistence: META-INF/persistence.xml

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application:Application xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:advanced="http://www.eclipse.org/ui/2010/UIModel/application/ui/advanced" xmlns:application="http://www.eclipse.org/ui/2010/UIModel/application" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmlns:menu="http://www.eclipse.org/ui/2010/UIModel/application/ui/menu" xmi:id="_Faz44FcWEeG0Z5nzWlsSYQ" elementId="org.eclipse.e4.ide.application" bindingContexts="_Faz44VcWEeG0Z5nzWlsSYQ">
+  <children xsi:type="basic:TrimmedWindow" xmi:id="_Fa0f8FcWEeG0Z5nzWlsSYQ" label="Gemini e4" width="500" height="400">
+    <children xsi:type="advanced:PerspectiveStack" xmi:id="_Fa0f-FcWEeG0Z5nzWlsSYQ">
+      <children xsi:type="advanced:Perspective" xmi:id="_Fa0f-VcWEeG0Z5nzWlsSYQ">
+        <children xsi:type="basic:PartSashContainer" xmi:id="_Fa0f-lcWEeG0Z5nzWlsSYQ">
+          <children xsi:type="basic:PartStack" xmi:id="_Fa0f-1cWEeG0Z5nzWlsSYQ"/>
+        </children>
+      </children>
+    </children>
+    <mainMenu xmi:id="_Fa0f8VcWEeG0Z5nzWlsSYQ" elementId="menu:org.eclipse.ui.main.menu">
+      <children xsi:type="menu:Menu" xmi:id="_Fa0f8lcWEeG0Z5nzWlsSYQ" label="File"/>
+    </mainMenu>
+    <trimBars xmi:id="_Fa0f_FcWEeG0Z5nzWlsSYQ">
+      <children xsi:type="menu:ToolBar" xmi:id="_Fa0f_VcWEeG0Z5nzWlsSYQ" elementId="toolbar:org.eclipse.ui.main.toolbar">
+        <children xsi:type="menu:HandledToolItem" xmi:id="_WNOXQJI1EeKNqdq07BoeQQ" elementId="de.mukis.gemini.sample.rcp.handledtoolitem.savePerson" label="Save" iconURI="platform:/plugin/de.mukis.gemini.sample.rcp/icons/savePerson_16.png" command="_3BnP0JI0EeKNqdq07BoeQQ"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_fMv3AJI1EeKNqdq07BoeQQ" elementId="de.mukis.gemini.sample.rcp.handledtoolitem.0" label="Save2" iconURI="platform:/plugin/de.mukis.gemini.sample.rcp/icons/savePerson_16.png" command="_AqlVMJI1EeKNqdq07BoeQQ"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_ivLb8JI1EeKNqdq07BoeQQ" elementId="de.mukis.gemini.sample.rcp.handledtoolitem.1" label="Save to MultiDB" iconURI="platform:/plugin/de.mukis.gemini.sample.rcp/icons/savePerson_16.png" command="_JLiCkJI1EeKNqdq07BoeQQ"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_ljXa0JI1EeKNqdq07BoeQQ" elementId="de.mukis.gemini.sample.rcp.handledtoolitem.2" label="Save Preferences" iconURI="platform:/plugin/de.mukis.gemini.sample.rcp/icons/save_edit.gif" command="_Rbj_EJI1EeKNqdq07BoeQQ"/>
+      </children>
+    </trimBars>
+  </children>
+  <handlers xmi:id="_4PxFAJI0EeKNqdq07BoeQQ" elementId="de.mukis.gemini.sample.rcp.handler.savePerson" contributionURI="bundleclass://de.mukis.gemini.sample.rcp/de.mukis.gemini.sample.rcp.handlers.SavePersonHandler" command="_3BnP0JI0EeKNqdq07BoeQQ"/>
+  <handlers xmi:id="_DL7QkJI1EeKNqdq07BoeQQ" elementId="de.mukis.gemini.sample.rcp.handler.savePerson2" contributionURI="bundleclass://de.mukis.gemini.sample.rcp/de.mukis.gemini.sample.rcp.handlers.SavePersonHandler2" command="_AqlVMJI1EeKNqdq07BoeQQ"/>
+  <handlers xmi:id="_H4KWMJI1EeKNqdq07BoeQQ" elementId="de.mukis.gemini.sample.rcp.handler.savePersonMulti" contributionURI="bundleclass://de.mukis.gemini.sample.rcp/de.mukis.gemini.sample.rcp.handlers.SaveMultiDBHandler" command="_JLiCkJI1EeKNqdq07BoeQQ"/>
+  <handlers xmi:id="_QnI4gJI1EeKNqdq07BoeQQ" elementId="de.mukis.gemini.sample.rcp.handler.savePreferences" contributionURI="bundleclass://de.mukis.gemini.sample.rcp/de.mukis.gemini.sample.rcp.handlers.SavePreferencesHandler" command="_Rbj_EJI1EeKNqdq07BoeQQ"/>
+  <bindingTables xmi:id="_Faz47FcWEeG0Z5nzWlsSYQ" bindingContext="_Faz44VcWEeG0Z5nzWlsSYQ">
+    <bindings xmi:id="_Faz47VcWEeG0Z5nzWlsSYQ" keySequence="Ctrl+Q"/>
+    <bindings xmi:id="_Faz48FcWEeG0Z5nzWlsSYQ" keySequence="Ctrl+O"/>
+    <bindings xmi:id="_Faz481cWEeG0Z5nzWlsSYQ" keySequence="Ctrl+S"/>
+    <bindings xmi:id="_Faz49lcWEeG0Z5nzWlsSYQ" keySequence="Ctrl+A"/>
+  </bindingTables>
+  <rootContext xmi:id="_Faz44VcWEeG0Z5nzWlsSYQ" elementId="org.eclipse.ui.contexts.dialogAndWindow" name="In Dialog and Windows">
+    <children xmi:id="_Faz44lcWEeG0Z5nzWlsSYQ" elementId="org.eclipse.ui.contexts.window" name="In Windows"/>
+    <children xmi:id="_Faz441cWEeG0Z5nzWlsSYQ" elementId="org.eclipse.ui.contexts.dialog" name="In Dialogs"/>
+  </rootContext>
+  <commands xmi:id="_3BnP0JI0EeKNqdq07BoeQQ" elementId="de.mukis.gemini.sample.rcp.command.savePerson" commandName="Save Person" description="Saves a single person"/>
+  <commands xmi:id="_AqlVMJI1EeKNqdq07BoeQQ" elementId="de.mukis.gemini.sample.rcp.command.savePerson2" commandName="Save Person 2" description="Saves another person"/>
+  <commands xmi:id="_JLiCkJI1EeKNqdq07BoeQQ" elementId="de.mukis.gemini.sample.rcp.command.savePersonMulti" commandName="Save Person Multiple DB" description=""/>
+  <commands xmi:id="_Rbj_EJI1EeKNqdq07BoeQQ" elementId="de.mukis.gemini.sample.rcp.command.savePreferences" commandName="Saves preferences" description="Saves db preferences"/>
+  <addons xmi:id="_Faz45FcWEeG0Z5nzWlsSYQ" elementId="org.eclipse.e4.core.commands.service" contributionURI="bundleclass://org.eclipse.e4.core.commands/org.eclipse.e4.core.commands.CommandServiceAddon"/>
+  <addons xmi:id="_Faz45VcWEeG0Z5nzWlsSYQ" elementId="org.eclipse.e4.ui.contexts.service" contributionURI="bundleclass://org.eclipse.e4.ui.services/org.eclipse.e4.ui.services.ContextServiceAddon"/>
+  <addons xmi:id="_Faz45lcWEeG0Z5nzWlsSYQ" elementId="org.eclipse.e4.ui.bindings.service" contributionURI="bundleclass://org.eclipse.e4.ui.bindings/org.eclipse.e4.ui.bindings.BindingServiceAddon"/>
+  <addons xmi:id="_Faz451cWEeG0Z5nzWlsSYQ" elementId="org.eclipse.e4.ui.workbench.commands.model" contributionURI="bundleclass://org.eclipse.e4.ui.workbench/org.eclipse.e4.ui.internal.workbench.addons.CommandProcessingAddon"/>
+  <addons xmi:id="_Faz46FcWEeG0Z5nzWlsSYQ" elementId="org.eclipse.e4.ui.workbench.contexts.model" contributionURI="bundleclass://org.eclipse.e4.ui.workbench/org.eclipse.e4.ui.internal.workbench.addons.ContextProcessingAddon"/>
+  <addons xmi:id="_Faz46VcWEeG0Z5nzWlsSYQ" elementId="org.eclipse.e4.ui.workbench.bindings.model" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.swt/org.eclipse.e4.ui.workbench.swt.util.BindingProcessingAddon"/>
+</application:Application>

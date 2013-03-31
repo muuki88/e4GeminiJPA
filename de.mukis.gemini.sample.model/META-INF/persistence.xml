@@ -40,4 +40,11 @@
         <class>de.mukis.gemini.sample.model.Person</class>
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
     </persistence-unit>
+    
+    <!-- Unconfigured persistence unit - will be done programmatically -->
+    <persistence-unit name="unconfigured3" transaction-type="RESOURCE_LOCAL">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <class>de.mukis.gemini.sample.model.Person</class>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+    </persistence-unit>
 </persistence>

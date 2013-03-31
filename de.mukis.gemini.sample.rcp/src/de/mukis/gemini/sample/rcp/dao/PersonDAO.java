@@ -37,7 +37,9 @@ public class PersonDAO {
 
     @PreDestroy
     public void destroy() {
-        em.close();
+        if (em != null) {
+            em.close();
+        }
     }
 
     private void checkConnection() throws SQLException {

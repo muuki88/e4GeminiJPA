@@ -15,6 +15,12 @@ import org.eclipse.swt.widgets.Shell;
 
 import de.mukis.gemini.sample.model.Person;
 
+/**
+ * Configure your persistence unit inside the POJO.
+ * 
+ * @author muki
+ * 
+ */
 public class SavePersonHandler2 {
 
     @Inject

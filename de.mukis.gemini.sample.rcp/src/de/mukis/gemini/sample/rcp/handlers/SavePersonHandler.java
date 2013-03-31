@@ -13,6 +13,12 @@ import org.eclipse.swt.widgets.Shell;
 
 import de.mukis.gemini.sample.model.Person;
 
+/**
+ * The easiest way to get an {@link EntityManager} injected.
+ * 
+ * @author muki
+ * 
+ */
 public class SavePersonHandler {
 
     @Inject

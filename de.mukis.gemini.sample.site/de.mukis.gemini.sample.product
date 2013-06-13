@@ -45,7 +45,7 @@ http://www.eclipse.org/legal/epl-v10.html
       <feature id="de.mukis.gemini.sample.feature" version="0.0.1.qualifier"/>
       <feature id="org.eclipse.gemini.dbaccess.feature" version="1.1.0.RELEASE"/>
       <feature id="org.eclipse.gemini.jpa.feature" version="1.1.0.RELEASE"/>
-      <feature id="org.eclipse.gemini.ext.di.feature" version="1.0.2.201303211547"/>
+      <feature id="org.eclipse.gemini.ext.di.feature" version="1.0.2.201306021557"/>
       <feature id="org.eclipse.persistence.jpa" version="2.4.1.v20121003-ad44345"/>
    </features>
 

@@ -18,33 +18,33 @@ import de.mukis.gemini.sample.model.Person;
 @Creatable
 public class PersonDAO {
 
-    @Inject
-    @GeminiPersistenceContext(unitName = "unconfigured2", properties = {
-            @GeminiPersistenceProperty(name = PersistenceUnitProperties.JDBC_DRIVER, valuePref = @Preference("jdbc_driver")),
-            @GeminiPersistenceProperty(name = PersistenceUnitProperties.JDBC_URL, valuePref = @Preference("jdbc_url")),
-            @GeminiPersistenceProperty(name = PersistenceUnitProperties.LOGGING_LEVEL, value = "FINE"),
-            @GeminiPersistenceProperty(name = PersistenceUnitProperties.WEAVING, value = "false"),
-            @GeminiPersistenceProperty(name = PersistenceUnitProperties.WEAVING_INTERNAL, value = "false") })
-    private EntityManager em;
+	@Inject
+	@GeminiPersistenceContext(unitName = "unconfigured2", properties = {
+			@GeminiPersistenceProperty(name = PersistenceUnitProperties.JDBC_DRIVER, valuePref = @Preference("jdbc_driver")),
+			@GeminiPersistenceProperty(name = PersistenceUnitProperties.JDBC_URL, valuePref = @Preference("jdbc_url")),
+			@GeminiPersistenceProperty(name = PersistenceUnitProperties.LOGGING_LEVEL, value = "FINE"),
+			@GeminiPersistenceProperty(name = PersistenceUnitProperties.WEAVING, value = "false"),
+			@GeminiPersistenceProperty(name = PersistenceUnitProperties.WEAVING_INTERNAL, value = "false") })
+	private EntityManager em;
 
-    public void save(Person dataObj) throws SQLException {
-        checkConnection();
-        EntityTransaction trx = em.getTransaction();
-        trx.begin();
-        em.persist(dataObj);
-        trx.commit();
-    }
+	public void save(Person dataObj) throws SQLException {
+		checkConnection();
+		EntityTransaction trx = em.getTransaction();
+		trx.begin();
+		em.persist(dataObj);
+		trx.commit();
+	}
 
-    @PreDestroy
-    public void destroy() {
-        if (em != null) {
-            em.close();
-        }
-    }
+	@PreDestroy
+	public void destroy() {
+		if (em != null && em.isOpen()) {
+			em.close();
+		}
+	}
 
-    private void checkConnection() throws SQLException {
-        if (em == null) {
-            throw new SQLException("EntityManager is null. Not connected to database!");
-        }
-    }
+	private void checkConnection() throws SQLException {
+		if (em == null) {
+			throw new SQLException("EntityManager is null. Not connected to database!");
+		}
+	}
 }

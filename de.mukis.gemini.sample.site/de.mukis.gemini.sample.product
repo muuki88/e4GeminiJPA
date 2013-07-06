@@ -41,12 +41,12 @@ http://www.eclipse.org/legal/epl-v10.html
       <feature id="org.slf4j.feature"/>
       <feature id="de.mukis.gemini.sample.feature" version="0.0.1.qualifier"/>
       <feature id="org.eclipse.gemini.dbaccess.feature" version="1.1.0.RELEASE"/>
-      <feature id="org.eclipse.gemini.ext.di.feature" version="1.0.2.201306021557"/>
       <feature id="org.eclipse.emf.common" version="2.9.0.v20130528-0742"/>
       <feature id="org.eclipse.emf.ecore" version="2.9.0.v20130528-0742"/>
       <feature id="org.eclipse.e4.rcp" version="1.2.0.v20130605-1738"/>
       <feature id="org.eclipse.persistence.jpa" version="2.5.0.v20130507-3faac2b"/>
       <feature id="org.eclipse.gemini.jpa.feature" version="1.2.0.M1"/>
+      <feature id="org.eclipse.gemini.ext.di.feature" version="1.1.0.201307061743"/>
    </features>
 
    <configurations>

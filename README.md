@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/muuki88/e4GeminiJPA.png)](https://travis-ci.org/muuki88/e4GeminiJPA)
+
 ## Goal
 
 Add the ability to inject EntityManagers for a certain

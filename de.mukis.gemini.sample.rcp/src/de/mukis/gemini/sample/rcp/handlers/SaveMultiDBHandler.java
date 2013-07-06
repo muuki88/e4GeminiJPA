@@ -35,36 +35,36 @@ import de.mukis.gemini.sample.rcp.dao.PersonDAO;
  */
 public class SaveMultiDBHandler {
 
-    @Inject
-    @GeminiPersistenceUnit(unitName = "configured")
-    EntityManagerFactory emf;
+	@Inject
+	@GeminiPersistenceUnit(unitName = "configured")
+	EntityManagerFactory emf;
 
-    @Inject
-    PersonDAO dao;
+	@Execute
+	public void execute(@Named(IServiceConstants.ACTIVE_SHELL) Shell shell, PersonDAO dao) throws InvocationTargetException,
+			InterruptedException {
 
-    @Execute
-    public void execute(@Named(IServiceConstants.ACTIVE_SHELL) Shell shell) throws InvocationTargetException, InterruptedException {
+		try {
+			// Via injected DAO
+			Person person1 = new Person("Max", "Wild");
+			dao.save(person1);
+		} catch (Exception e) {
+			MessageDialog.openError(shell, "Error persisting Person", "Something went wrong in the PersonDAO \n " + e.getMessage());
+		}
+		try {
+			// Single EntityManager
+			EntityManager em = emf.createEntityManager();
+			em.getTransaction().begin();
 
-        try {
-            // Via injected DAO
-            Person person1 = new Person("Max", "Wild");
-            dao.save(person1);
+			Person person2 = new Person("Bill", "Smith");
+			em.persist(person2);
+			em.getTransaction().commit();
+			em.close();
 
-            // Single EntityManager
-            EntityManager em = emf.createEntityManager();
-            em.getTransaction().begin();
+			MessageDialog.openInformation(shell, "Person persisted",
+					"Persisted person via injected DAO \n and via temporary EntityManager!");
+		} catch (Exception e) {
+			MessageDialog.openError(shell, "Error persisting Person", "Something went wrong with injected EMF \n " + e.getMessage());
+		}
 
-            Person person2 = new Person("Bill", "Smith");
-            em.persist(person2);
-            em.getTransaction().commit();
-            em.close();
-
-            MessageDialog.openInformation(shell, "Person persisted",
-                    "Persisted person via injected DAO \n and via temporary EntityManager!");
-        } catch (Exception e) {
-            MessageDialog.openError(shell, "Error persisting Person", "Something went wrong \n " + e.getMessage());
-        }
-
-    }
-
+	}
 }

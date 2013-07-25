@@ -16,11 +16,13 @@
         <children xsi:type="menu:HandledToolItem" xmi:id="_WNOXQJI1EeKNqdq07BoeQQ" elementId="de.mukis.gemini.sample.rcp.handledtoolitem.savePerson" label="Save" iconURI="platform:/plugin/de.mukis.gemini.sample.rcp/icons/savePerson_16.png" command="_3BnP0JI0EeKNqdq07BoeQQ"/>
         <children xsi:type="menu:HandledToolItem" xmi:id="_fMv3AJI1EeKNqdq07BoeQQ" elementId="de.mukis.gemini.sample.rcp.handledtoolitem.0" label="Save2" iconURI="platform:/plugin/de.mukis.gemini.sample.rcp/icons/savePerson_16.png" command="_AqlVMJI1EeKNqdq07BoeQQ"/>
         <children xsi:type="menu:ToolBarSeparator" xmi:id="_M_CY4JoWEeK8lY4LNzw0Ug" elementId="de.mukis.gemini.sample.rcp.toolbarseparator.0"/>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_ivLb8JI1EeKNqdq07BoeQQ" elementId="de.mukis.gemini.sample.rcp.handledtoolitem.1" label="Save to MultiDB" iconURI="platform:/plugin/de.mukis.gemini.sample.rcp/icons/savePerson_16.png" command="_JLiCkJI1EeKNqdq07BoeQQ"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_ivLb8JI1EeKNqdq07BoeQQ" elementId="de.mukis.gemini.sample.rcp.handledtoolitem.1" label="Save to MultiDB" iconURI="platform:/plugin/de.mukis.gemini.sample.rcp/icons/database--plus.png" command="_JLiCkJI1EeKNqdq07BoeQQ"/>
         <children xsi:type="menu:HandledToolItem" xmi:id="_ljXa0JI1EeKNqdq07BoeQQ" elementId="de.mukis.gemini.sample.rcp.handledtoolitem.2" label="Save Preferences" iconURI="platform:/plugin/de.mukis.gemini.sample.rcp/icons/save_edit.gif" command="_Rbj_EJI1EeKNqdq07BoeQQ"/>
         <children xsi:type="menu:ToolBarSeparator" xmi:id="_3dCoUJobEeKsFfMZN-jSqw" elementId="de.mukis.gemini.sample.rcp.toolbarseparator.1"/>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_PLHO4JoWEeK8lY4LNzw0Ug" elementId="de.mukis.gemini.sample.rcp.handledtoolitem.3" label="Save Person Preferences" iconURI="platform:/plugin/de.mukis.gemini.sample.rcp/icons/savePerson_16.png" command="_Q74eYJoVEeK8lY4LNzw0Ug"/>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_43LEAJobEeKsFfMZN-jSqw" elementId="de.mukis.gemini.sample.rcp.handledtoolitem.4" label="Save Person Preferences 2" iconURI="platform:/plugin/de.mukis.gemini.sample.rcp/icons/savePerson_16.png" command="_s-AdoJobEeKsFfMZN-jSqw"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_PLHO4JoWEeK8lY4LNzw0Ug" elementId="de.mukis.gemini.sample.rcp.handledtoolitem.3" label="Save Person Preferences" iconURI="platform:/plugin/de.mukis.gemini.sample.rcp/icons/gtk-save.png" command="_Q74eYJoVEeK8lY4LNzw0Ug"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_43LEAJobEeKsFfMZN-jSqw" elementId="de.mukis.gemini.sample.rcp.handledtoolitem.4" label="Save Person Preferences 2" iconURI="platform:/plugin/de.mukis.gemini.sample.rcp/icons/gtk-revert-to-saved-rtl.png" command="_s-AdoJobEeKsFfMZN-jSqw"/>
+        <children xsi:type="menu:ToolBarSeparator" xmi:id="_T9OWUPVYEeKJeIfbfK06Tw" elementId="de.mukis.gemini.sample.rcp.toolbarseparator.2"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_VOd7wPVYEeKJeIfbfK06Tw" elementId="de.mukis.gemini.sample.rcp.handledtoolitem.5" label="PreferencesDialog" iconURI="platform:/plugin/de.mukis.gemini.sample.rcp/icons/gtk-preferences.png" tooltip="PreferencesDialog" command="_NySeEPVYEeKJeIfbfK06Tw"/>
       </children>
     </trimBars>
   </children>
@@ -30,6 +32,7 @@
   <handlers xmi:id="_QnI4gJI1EeKNqdq07BoeQQ" elementId="de.mukis.gemini.sample.rcp.handler.savePreferences" contributionURI="bundleclass://de.mukis.gemini.sample.rcp/de.mukis.gemini.sample.rcp.handlers.SavePreferencesHandler" command="_Rbj_EJI1EeKNqdq07BoeQQ"/>
   <handlers xmi:id="_VhPf8JoVEeK8lY4LNzw0Ug" elementId="de.mukis.gemini.sample.rcp.handler.savePersonPreferences" contributionURI="bundleclass://de.mukis.gemini.sample.rcp/de.mukis.gemini.sample.rcp.handlers.SavePersonPreferencesHandler" command="_Q74eYJoVEeK8lY4LNzw0Ug"/>
   <handlers xmi:id="_xMXUcJobEeKsFfMZN-jSqw" elementId="de.mukis.gemini.sample.rcp.handler.savePersonPreferences2" contributionURI="bundleclass://de.mukis.gemini.sample.rcp/de.mukis.gemini.sample.rcp.handlers.SavePersonPreferencesHandler2" command="_s-AdoJobEeKsFfMZN-jSqw"/>
+  <handlers xmi:id="_GRb7wPVYEeKJeIfbfK06Tw" elementId="de.mukis.gemini.sample.rcp.handler.ShowPreferenceDialog" contributionURI="bundleclass://de.mukis.gemini.sample.rcp/de.mukis.gemini.sample.rcp.handlers.ShowPreferencesDialog" command="_NySeEPVYEeKJeIfbfK06Tw"/>
   <bindingTables xmi:id="_Faz47FcWEeG0Z5nzWlsSYQ" bindingContext="_Faz44VcWEeG0Z5nzWlsSYQ">
     <bindings xmi:id="_Faz47VcWEeG0Z5nzWlsSYQ" keySequence="Ctrl+Q"/>
     <bindings xmi:id="_Faz48FcWEeG0Z5nzWlsSYQ" keySequence="Ctrl+O"/>
@@ -46,6 +49,7 @@
   <commands xmi:id="_Rbj_EJI1EeKNqdq07BoeQQ" elementId="de.mukis.gemini.sample.rcp.command.savePreferences" commandName="Save Preferences" description="Saves db preferences"/>
   <commands xmi:id="_Q74eYJoVEeK8lY4LNzw0Ug" elementId="de.mukis.gemini.sample.rcp.command.savePersonPreferences" commandName="Save Person Preferences"/>
   <commands xmi:id="_s-AdoJobEeKsFfMZN-jSqw" elementId="de.mukis.gemini.sample.rcp.command.savePersonPreferences2" commandName="Save Person Preferences 2"/>
+  <commands xmi:id="_NySeEPVYEeKJeIfbfK06Tw" elementId="de.mukis.gemini.sample.rcp.command.PreferenceDialog" commandName="PreferenceDialog"/>
   <addons xmi:id="_Faz45FcWEeG0Z5nzWlsSYQ" elementId="org.eclipse.e4.core.commands.service" contributionURI="bundleclass://org.eclipse.e4.core.commands/org.eclipse.e4.core.commands.CommandServiceAddon"/>
   <addons xmi:id="_Faz45VcWEeG0Z5nzWlsSYQ" elementId="org.eclipse.e4.ui.contexts.service" contributionURI="bundleclass://org.eclipse.e4.ui.services/org.eclipse.e4.ui.services.ContextServiceAddon"/>
   <addons xmi:id="_Faz45lcWEeG0Z5nzWlsSYQ" elementId="org.eclipse.e4.ui.bindings.service" contributionURI="bundleclass://org.eclipse.e4.ui.bindings/org.eclipse.e4.ui.bindings.BindingServiceAddon"/>

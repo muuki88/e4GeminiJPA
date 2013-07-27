@@ -46,7 +46,7 @@ http://www.eclipse.org/legal/epl-v10.html
       <feature id="org.eclipse.e4.rcp" version="1.2.0.v20130605-1738"/>
       <feature id="org.eclipse.persistence.jpa" version="2.5.0.v20130507-3faac2b"/>
       <feature id="org.eclipse.gemini.jpa.feature" version="1.2.0.M1"/>
-      <feature id="org.eclipse.gemini.ext.di.feature" version="1.1.0.201307061743"/>
+      <feature id="org.eclipse.gemini.ext.di.feature" version="1.1.1.201307271435"/>
    </features>
 
    <configurations>

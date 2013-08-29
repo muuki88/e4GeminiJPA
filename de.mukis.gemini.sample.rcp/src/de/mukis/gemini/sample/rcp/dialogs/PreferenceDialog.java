@@ -116,6 +116,7 @@ public class PreferenceDialog extends TitleAreaDialog {
 		try {
 			preferences.put("jdbc_driver", driver);
 			preferences.put("jdbc_url", txtURL.getText());
+			preferences.putBoolean("jdbc_reconnect", true);
 			preferences.flush();
 		} catch (BackingStoreException e) {
 			e.printStackTrace();

@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
+import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.eclipse.e4.core.di.annotations.Creatable;
 import org.eclipse.e4.core.di.extensions.Preference;
 import org.eclipse.gemini.ext.di.GeminiPersistenceContext;
@@ -26,8 +27,13 @@ public class PersonDAO {
 			@GeminiPersistenceProperty(name = PersistenceUnitProperties.LOGGING_LEVEL, value = "FINE"),
 			@GeminiPersistenceProperty(name = PersistenceUnitProperties.WEAVING, value = "false"),
 			@GeminiPersistenceProperty(name = PersistenceUnitProperties.WEAVING_INTERNAL, value = "false"),
-			@GeminiPersistenceProperty(name = GeminiPersistenceProperties.GEMINI_REINIT) })
+			@GeminiPersistenceProperty(name = GeminiPersistenceProperties.GEMINI_REINIT, valuePref = @Preference("jdbc_reconnect")) })
 	private EntityManager em;
+
+	@Inject
+	private void updatePreferences(@Preference IEclipsePreferences preferences) {
+		preferences.putBoolean("jdbc_reconnect", false);
+	}
 
 	public void save(Person dataObj) throws SQLException {
 		checkConnection();

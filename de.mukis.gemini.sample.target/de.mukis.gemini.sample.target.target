@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<?pde version="3.8"?><target name="org.e4.gemini.target" sequenceNumber="14">
+<?pde version="3.8"?><target name="org.e4.gemini.target" sequenceNumber="15">
 <locations>
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="slicer" includeSource="true" type="InstallableUnit">
 <unit id="ch.qos.logback.feature.feature.group" version="1.0.7"/>
@@ -27,8 +27,8 @@
 <repository location="http://download.eclipse.org/gemini/jpa/updates"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="slicer" includeSource="true" type="InstallableUnit">
-<unit id="org.eclipse.gemini.ext.di.feature.feature.group" version="1.1.1.201307271435"/>
-<repository location="http://repository.mukis.de/p2/org.eclipse.gemini.ext.di/1.1.1"/>
+<unit id="org.eclipse.gemini.ext.di.feature.feature.group" version="1.1.2.201308292016"/>
+<repository location="http://repository.mukis.de/p2/org.eclipse.gemini.ext.di/1.1.2"/>
 </location>
 </locations>
 </target>

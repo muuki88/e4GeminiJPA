@@ -15,19 +15,20 @@ import org.osgi.service.prefs.BackingStoreException;
 
 public class SavePreferencesHandler {
 
-    @Inject
-    @Preference
-    IEclipsePreferences preferences;
+	@Inject
+	@Preference
+	IEclipsePreferences preferences;
 
-    @Execute
-    public void execute(@Named(IServiceConstants.ACTIVE_SHELL) Shell shell) throws InvocationTargetException, InterruptedException {
-        preferences.put("jdbc_driver", "org.apache.derby.jdbc.EmbeddedDriver");
-        preferences.put("jdbc_url", "jdbc:derby:memory:test2;create=true");
-        try {
-            preferences.flush();
-            MessageDialog.openInformation(shell, "Info :: Save Preferences", "Done! Saved driver (derby embedded) and url");
-        } catch (BackingStoreException e) {
-            e.printStackTrace();
-        }
-    }
+	@Execute
+	public void execute(@Named(IServiceConstants.ACTIVE_SHELL) Shell shell) throws InvocationTargetException, InterruptedException {
+		try {
+			preferences.put("jdbc_driver", "org.apache.derby.jdbc.EmbeddedDriver");
+			preferences.put("jdbc_url", "jdbc:derby:memory:test2;create=true");
+			preferences.putBoolean("jdbc_reconnect", true);
+			preferences.flush();
+			MessageDialog.openInformation(shell, "Info :: Save Preferences", "Done! Saved driver (derby embedded) and url");
+		} catch (BackingStoreException e) {
+			e.printStackTrace();
+		}
+	}
 }

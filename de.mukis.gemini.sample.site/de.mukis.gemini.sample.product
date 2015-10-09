@@ -7,8 +7,10 @@
    </configIni>
 
    <launcherArgs>
-      <vmArgs>-DREFRESH_BUNDLES=false</vmArgs>
-      <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts</vmArgsMac>
+      <vmArgs>-DREFRESH_BUNDLES=false
+      </vmArgs>
+      <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts
+      </vmArgsMac>
    </launcherArgs>
 
    <windowImages/>
@@ -38,24 +40,33 @@ http://www.eclipse.org/legal/epl-v10.html
 
    <features>
       <feature id="ch.qos.logback.feature" version="1.0.7"/>
-      <feature id="org.slf4j.feature"/>
       <feature id="de.mukis.gemini.sample.feature" version="0.0.1.qualifier"/>
       <feature id="org.eclipse.gemini.dbaccess.feature" version="1.1.0.RELEASE"/>
-      <feature id="org.eclipse.emf.common" version="2.9.0.v20130528-0742"/>
-      <feature id="org.eclipse.emf.ecore" version="2.9.0.v20130528-0742"/>
-      <feature id="org.eclipse.e4.rcp" version="1.2.0.v20130605-1738"/>
+      <feature id="org.eclipse.emf.common"/>
+      <feature id="org.eclipse.emf.ecore"/>
+      <feature id="org.eclipse.e4.rcp"/>
       <feature id="org.eclipse.persistence.jpa" version="2.5.0.v20130507-3faac2b"/>
       <feature id="org.eclipse.gemini.jpa.feature" version="1.2.0.M1"/>
       <feature id="org.eclipse.gemini.ext.di.feature" version="1.1.2.201308292016"/>
+      <feature id="org.slf4j.feature" version="1.6.6"/>
    </features>
 
    <configurations>
-      <plugin id="de.mukis.gemini.sample.model" autoStart="true" startLevel="0" />
+      <plugin id="de.mukis.gemini.sample.model" autoStart="true" startLevel="2" />
+      <plugin id="javax.mail" autoStart="false" startLevel="0" />
+      <plugin id="javax.persistence" autoStart="false" startLevel="0" />
+      <plugin id="org.eclipse.core.databinding" autoStart="false" startLevel="0" />
+      <plugin id="org.eclipse.core.databinding.beans" autoStart="false" startLevel="0" />
       <plugin id="org.eclipse.core.runtime" autoStart="true" startLevel="2" />
+      <plugin id="org.eclipse.equinox.common" autoStart="true" startLevel="2" />
       <plugin id="org.eclipse.equinox.ds" autoStart="true" startLevel="2" />
       <plugin id="org.eclipse.equinox.event" autoStart="true" startLevel="3" />
+      <plugin id="org.eclipse.equinox.p2.reconciler.dropins" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.equinox.simpleconfigurator" autoStart="true" startLevel="1" />
       <plugin id="org.eclipse.gemini.dbaccess.derby" autoStart="true" startLevel="2" />
       <plugin id="org.eclipse.gemini.jpa" autoStart="true" startLevel="3" />
+      <plugin id="org.eclipse.osgi" autoStart="false" startLevel="0" />
+      <plugin id="slf4j.api" autoStart="false" startLevel="0" />
    </configurations>
 
 </product>
